@@ -2,108 +2,49 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="HelloWorld">
-        <s:complexType />
-      </s:element>
-      <s:element name="HelloWorldResponse">
+      <s:element name="Participer">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pseudo" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="Add">
+      <s:element name="ParticiperResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="a" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="b" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ParticiperResult" type="tns:ArrayOfParticipant" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="AddResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="AddResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetClients">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetClientsResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetClientsResult" type="tns:ArrayOfClient" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfClient">
+      <s:complexType name="ArrayOfParticipant">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Client" nillable="true" type="tns:Client" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Participant" nillable="true" type="tns:Participant" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="Client">
+      <s:complexType name="Participant">
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Nom" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pseudo" type="s:string" />
         </s:sequence>
       </s:complexType>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="HelloWorldSoapIn">
-    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  <wsdl:message name="ParticiperSoapIn">
+    <wsdl:part name="parameters" element="tns:Participer" />
   </wsdl:message>
-  <wsdl:message name="HelloWorldSoapOut">
-    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
-  </wsdl:message>
-  <wsdl:message name="AddSoapIn">
-    <wsdl:part name="parameters" element="tns:Add" />
-  </wsdl:message>
-  <wsdl:message name="AddSoapOut">
-    <wsdl:part name="parameters" element="tns:AddResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetClientsSoapIn">
-    <wsdl:part name="parameters" element="tns:GetClients" />
-  </wsdl:message>
-  <wsdl:message name="GetClientsSoapOut">
-    <wsdl:part name="parameters" element="tns:GetClientsResponse" />
+  <wsdl:message name="ParticiperSoapOut">
+    <wsdl:part name="parameters" element="tns:ParticiperResponse" />
   </wsdl:message>
   <wsdl:portType name="ws_chatSoap">
-    <wsdl:operation name="HelloWorld">
-      <wsdl:input message="tns:HelloWorldSoapIn" />
-      <wsdl:output message="tns:HelloWorldSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="Add">
-      <wsdl:input message="tns:AddSoapIn" />
-      <wsdl:output message="tns:AddSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetClients">
-      <wsdl:input message="tns:GetClientsSoapIn" />
-      <wsdl:output message="tns:GetClientsSoapOut" />
+    <wsdl:operation name="Participer">
+      <wsdl:input message="tns:ParticiperSoapIn" />
+      <wsdl:output message="tns:ParticiperSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ws_chatSoap" type="tns:ws_chatSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Add">
-      <soap:operation soapAction="http://tempuri.org/Add" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetClients">
-      <soap:operation soapAction="http://tempuri.org/GetClients" style="document" />
+    <wsdl:operation name="Participer">
+      <soap:operation soapAction="http://tempuri.org/Participer" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -114,26 +55,8 @@
   </wsdl:binding>
   <wsdl:binding name="ws_chatSoap12" type="tns:ws_chatSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Add">
-      <soap12:operation soapAction="http://tempuri.org/Add" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetClients">
-      <soap12:operation soapAction="http://tempuri.org/GetClients" style="document" />
+    <wsdl:operation name="Participer">
+      <soap12:operation soapAction="http://tempuri.org/Participer" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

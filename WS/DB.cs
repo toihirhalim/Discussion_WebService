@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace WS
+{
+    public class DB
+    {
+        static List<Participant> participants = new List<Participant>();
+
+        public static void Add(string pseudo)
+        {
+            participants.Add(new Participant(pseudo));
+        }
+
+        public static List<Participant> getListParticipants()
+        {
+            return participants;
+        }
+
+        public static bool Exist(string pseudo)
+        {
+            Participant participant = participants.Where(p => p.Pseudo.Equals(pseudo)).FirstOrDefault();
+
+            return participant != null;
+        }
+    }
+}

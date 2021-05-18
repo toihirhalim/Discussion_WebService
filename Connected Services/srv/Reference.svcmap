@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="59542e87-4739-40b6-8d96-807ad53507af" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f8131f2a-67aa-46e7-ba2f-eab2018f2f4a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,8 +22,8 @@
     <MetadataSource Address="https://localhost:44341/ws_chat.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ws_chat.wsdl" MetadataType="Wsdl" ID="78c8a72e-1c85-4136-a658-5b731619971e" SourceId="1" SourceUrl="https://localhost:44341/ws_chat.asmx?wsdl" />
-    <MetadataFile FileName="ws_chat.disco" MetadataType="Disco" ID="205d0134-dfac-430a-9528-e898187a4943" SourceId="1" SourceUrl="https://localhost:44341/ws_chat.asmx?disco" />
+    <MetadataFile FileName="ws_chat.wsdl" MetadataType="Wsdl" ID="e9e3e844-f369-494b-aaf0-f236db685476" SourceId="1" SourceUrl="https://localhost:44341/ws_chat.asmx?wsdl" />
+    <MetadataFile FileName="ws_chat.disco" MetadataType="Disco" ID="9029e100-37bc-4c1f-a3d9-594b303d64b9" SourceId="1" SourceUrl="https://localhost:44341/ws_chat.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

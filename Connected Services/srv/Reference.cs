@@ -15,9 +15,9 @@ namespace Discussion.srv {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Client", Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Participant", Namespace="http://tempuri.org/")]
     [System.SerializableAttribute()]
-    public partial class Client : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Participant : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -25,7 +25,7 @@ namespace Discussion.srv {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NomField;
+        private string PseudoField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -51,14 +51,14 @@ namespace Discussion.srv {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Nom {
+        public string Pseudo {
             get {
-                return this.NomField;
+                return this.PseudoField;
             }
             set {
-                if ((object.ReferenceEquals(this.NomField, value) != true)) {
-                    this.NomField = value;
-                    this.RaisePropertyChanged("Nom");
+                if ((object.ReferenceEquals(this.PseudoField, value) != true)) {
+                    this.PseudoField = value;
+                    this.RaisePropertyChanged("Pseudo");
                 }
             }
         }
@@ -77,67 +77,27 @@ namespace Discussion.srv {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="srv.ws_chatSoap")]
     public interface ws_chatSoap {
         
-        // CODEGEN : La génération du contrat de message depuis le nom d'élément HelloWorldResult de l'espace de noms http://tempuri.org/ n'est pas marqué nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
-        Discussion.srv.HelloWorldResponse HelloWorld(Discussion.srv.HelloWorldRequest request);
+        // CODEGEN : La génération du contrat de message depuis le nom d'élément pseudo de l'espace de noms http://tempuri.org/ n'est pas marqué nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Participer", ReplyAction="*")]
+        Discussion.srv.ParticiperResponse Participer(Discussion.srv.ParticiperRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
-        System.Threading.Tasks.Task<Discussion.srv.HelloWorldResponse> HelloWorldAsync(Discussion.srv.HelloWorldRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Add", ReplyAction="*")]
-        int Add(int a, int b);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Add", ReplyAction="*")]
-        System.Threading.Tasks.Task<int> AddAsync(int a, int b);
-        
-        // CODEGEN : La génération du contrat de message depuis le nom d'élément GetClientsResult de l'espace de noms http://tempuri.org/ n'est pas marqué nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetClients", ReplyAction="*")]
-        Discussion.srv.GetClientsResponse GetClients(Discussion.srv.GetClientsRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetClients", ReplyAction="*")]
-        System.Threading.Tasks.Task<Discussion.srv.GetClientsResponse> GetClientsAsync(Discussion.srv.GetClientsRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Participer", ReplyAction="*")]
+        System.Threading.Tasks.Task<Discussion.srv.ParticiperResponse> ParticiperAsync(Discussion.srv.ParticiperRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class HelloWorldRequest {
+    public partial class ParticiperRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorld", Namespace="http://tempuri.org/", Order=0)]
-        public Discussion.srv.HelloWorldRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="Participer", Namespace="http://tempuri.org/", Order=0)]
+        public Discussion.srv.ParticiperRequestBody Body;
         
-        public HelloWorldRequest() {
+        public ParticiperRequest() {
         }
         
-        public HelloWorldRequest(Discussion.srv.HelloWorldRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class HelloWorldRequestBody {
-        
-        public HelloWorldRequestBody() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class HelloWorldResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorldResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Discussion.srv.HelloWorldResponseBody Body;
-        
-        public HelloWorldResponse() {
-        }
-        
-        public HelloWorldResponse(Discussion.srv.HelloWorldResponseBody Body) {
+        public ParticiperRequest(Discussion.srv.ParticiperRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -146,43 +106,16 @@ namespace Discussion.srv {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class HelloWorldResponseBody {
+    public partial class ParticiperRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string HelloWorldResult;
+        public string pseudo;
         
-        public HelloWorldResponseBody() {
+        public ParticiperRequestBody() {
         }
         
-        public HelloWorldResponseBody(string HelloWorldResult) {
-            this.HelloWorldResult = HelloWorldResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetClientsRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetClients", Namespace="http://tempuri.org/", Order=0)]
-        public Discussion.srv.GetClientsRequestBody Body;
-        
-        public GetClientsRequest() {
-        }
-        
-        public GetClientsRequest(Discussion.srv.GetClientsRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class GetClientsRequestBody {
-        
-        public GetClientsRequestBody() {
+        public ParticiperRequestBody(string pseudo) {
+            this.pseudo = pseudo;
         }
     }
     
@@ -190,15 +123,15 @@ namespace Discussion.srv {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetClientsResponse {
+    public partial class ParticiperResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetClientsResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Discussion.srv.GetClientsResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ParticiperResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Discussion.srv.ParticiperResponseBody Body;
         
-        public GetClientsResponse() {
+        public ParticiperResponse() {
         }
         
-        public GetClientsResponse(Discussion.srv.GetClientsResponseBody Body) {
+        public ParticiperResponse(Discussion.srv.ParticiperResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -207,16 +140,16 @@ namespace Discussion.srv {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class GetClientsResponseBody {
+    public partial class ParticiperResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public Discussion.srv.Client[] GetClientsResult;
+        public Discussion.srv.Participant[] ParticiperResult;
         
-        public GetClientsResponseBody() {
+        public ParticiperResponseBody() {
         }
         
-        public GetClientsResponseBody(Discussion.srv.Client[] GetClientsResult) {
-            this.GetClientsResult = GetClientsResult;
+        public ParticiperResponseBody(Discussion.srv.Participant[] ParticiperResult) {
+            this.ParticiperResult = ParticiperResult;
         }
     }
     
@@ -248,57 +181,28 @@ namespace Discussion.srv {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Discussion.srv.HelloWorldResponse Discussion.srv.ws_chatSoap.HelloWorld(Discussion.srv.HelloWorldRequest request) {
-            return base.Channel.HelloWorld(request);
+        Discussion.srv.ParticiperResponse Discussion.srv.ws_chatSoap.Participer(Discussion.srv.ParticiperRequest request) {
+            return base.Channel.Participer(request);
         }
         
-        public string HelloWorld() {
-            Discussion.srv.HelloWorldRequest inValue = new Discussion.srv.HelloWorldRequest();
-            inValue.Body = new Discussion.srv.HelloWorldRequestBody();
-            Discussion.srv.HelloWorldResponse retVal = ((Discussion.srv.ws_chatSoap)(this)).HelloWorld(inValue);
-            return retVal.Body.HelloWorldResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Discussion.srv.HelloWorldResponse> Discussion.srv.ws_chatSoap.HelloWorldAsync(Discussion.srv.HelloWorldRequest request) {
-            return base.Channel.HelloWorldAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Discussion.srv.HelloWorldResponse> HelloWorldAsync() {
-            Discussion.srv.HelloWorldRequest inValue = new Discussion.srv.HelloWorldRequest();
-            inValue.Body = new Discussion.srv.HelloWorldRequestBody();
-            return ((Discussion.srv.ws_chatSoap)(this)).HelloWorldAsync(inValue);
-        }
-        
-        public int Add(int a, int b) {
-            return base.Channel.Add(a, b);
-        }
-        
-        public System.Threading.Tasks.Task<int> AddAsync(int a, int b) {
-            return base.Channel.AddAsync(a, b);
+        public Discussion.srv.Participant[] Participer(string pseudo) {
+            Discussion.srv.ParticiperRequest inValue = new Discussion.srv.ParticiperRequest();
+            inValue.Body = new Discussion.srv.ParticiperRequestBody();
+            inValue.Body.pseudo = pseudo;
+            Discussion.srv.ParticiperResponse retVal = ((Discussion.srv.ws_chatSoap)(this)).Participer(inValue);
+            return retVal.Body.ParticiperResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Discussion.srv.GetClientsResponse Discussion.srv.ws_chatSoap.GetClients(Discussion.srv.GetClientsRequest request) {
-            return base.Channel.GetClients(request);
+        System.Threading.Tasks.Task<Discussion.srv.ParticiperResponse> Discussion.srv.ws_chatSoap.ParticiperAsync(Discussion.srv.ParticiperRequest request) {
+            return base.Channel.ParticiperAsync(request);
         }
         
-        public Discussion.srv.Client[] GetClients() {
-            Discussion.srv.GetClientsRequest inValue = new Discussion.srv.GetClientsRequest();
-            inValue.Body = new Discussion.srv.GetClientsRequestBody();
-            Discussion.srv.GetClientsResponse retVal = ((Discussion.srv.ws_chatSoap)(this)).GetClients(inValue);
-            return retVal.Body.GetClientsResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Discussion.srv.GetClientsResponse> Discussion.srv.ws_chatSoap.GetClientsAsync(Discussion.srv.GetClientsRequest request) {
-            return base.Channel.GetClientsAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Discussion.srv.GetClientsResponse> GetClientsAsync() {
-            Discussion.srv.GetClientsRequest inValue = new Discussion.srv.GetClientsRequest();
-            inValue.Body = new Discussion.srv.GetClientsRequestBody();
-            return ((Discussion.srv.ws_chatSoap)(this)).GetClientsAsync(inValue);
+        public System.Threading.Tasks.Task<Discussion.srv.ParticiperResponse> ParticiperAsync(string pseudo) {
+            Discussion.srv.ParticiperRequest inValue = new Discussion.srv.ParticiperRequest();
+            inValue.Body = new Discussion.srv.ParticiperRequestBody();
+            inValue.Body.pseudo = pseudo;
+            return ((Discussion.srv.ws_chatSoap)(this)).ParticiperAsync(inValue);
         }
     }
 }

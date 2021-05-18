@@ -14,30 +14,17 @@ namespace WS
     {
 
         [WebMethod]
-        public string HelloWorld()
+        public List<Participant> Participer(string pseudo)
         {
-            return "Hello World";
+            if (!DB.Exist(pseudo))
+            {
+                DB.Add(pseudo);
+                return DB.getListParticipants();
+            }
+
+            return null;
         }
 
-        [WebMethod]
-        public int Add(int a, int b)
-        {
-            return a + b;
-        }
 
-        [WebMethod]
-        public List<Client> GetClients()
-        {
-            Thread.Sleep(5000);
-
-            List<Client> clients = new List<Client>();
-
-            clients.Add(new Client(1, "Ali"));
-            clients.Add(new Client(2, "Driss"));
-            clients.Add(new Client(3, "Rachida"));
-            clients.Add(new Client(4, "Mourad"));
-
-            return clients;
-        }
     }
 }

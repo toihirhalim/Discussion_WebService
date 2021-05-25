@@ -31,6 +31,11 @@ namespace WS
             DB.Delete(pseudo);
         }
 
+        [WebMethod]
+        public void ClearAll()
+        {
+            DB.Clear();
+        }
 
     }
 }

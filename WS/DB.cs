@@ -30,5 +30,10 @@ namespace WS
         {
             participants = participants.Where(p => !p.Pseudo.Equals(pseudo)).ToList();
         }
+
+        public static void Clear()
+        {
+            participants.Clear();
+        }
     }
 }

@@ -90,6 +90,12 @@ namespace Discussion.srv {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Quiter", ReplyAction="*")]
         System.Threading.Tasks.Task<Discussion.srv.QuiterResponse> QuiterAsync(Discussion.srv.QuiterRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ClearAll", ReplyAction="*")]
+        void ClearAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ClearAll", ReplyAction="*")]
+        System.Threading.Tasks.Task ClearAllAsync();
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -295,6 +301,14 @@ namespace Discussion.srv {
             inValue.Body = new Discussion.srv.QuiterRequestBody();
             inValue.Body.pseudo = pseudo;
             return ((Discussion.srv.ws_chatSoap)(this)).QuiterAsync(inValue);
+        }
+        
+        public void ClearAll() {
+            base.Channel.ClearAll();
+        }
+        
+        public System.Threading.Tasks.Task ClearAllAsync() {
+            return base.Channel.ClearAllAsync();
         }
     }
 }

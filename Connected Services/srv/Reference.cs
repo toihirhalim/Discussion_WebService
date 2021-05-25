@@ -83,6 +83,13 @@ namespace Discussion.srv {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Participer", ReplyAction="*")]
         System.Threading.Tasks.Task<Discussion.srv.ParticiperResponse> ParticiperAsync(Discussion.srv.ParticiperRequest request);
+        
+        // CODEGEN : La génération du contrat de message depuis le nom d'élément pseudo de l'espace de noms http://tempuri.org/ n'est pas marqué nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Quiter", ReplyAction="*")]
+        Discussion.srv.QuiterResponse Quiter(Discussion.srv.QuiterRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Quiter", ReplyAction="*")]
+        System.Threading.Tasks.Task<Discussion.srv.QuiterResponse> QuiterAsync(Discussion.srv.QuiterRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -153,6 +160,67 @@ namespace Discussion.srv {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class QuiterRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="Quiter", Namespace="http://tempuri.org/", Order=0)]
+        public Discussion.srv.QuiterRequestBody Body;
+        
+        public QuiterRequest() {
+        }
+        
+        public QuiterRequest(Discussion.srv.QuiterRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class QuiterRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string pseudo;
+        
+        public QuiterRequestBody() {
+        }
+        
+        public QuiterRequestBody(string pseudo) {
+            this.pseudo = pseudo;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class QuiterResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="QuiterResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Discussion.srv.QuiterResponseBody Body;
+        
+        public QuiterResponse() {
+        }
+        
+        public QuiterResponse(Discussion.srv.QuiterResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class QuiterResponseBody {
+        
+        public QuiterResponseBody() {
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface ws_chatSoapChannel : Discussion.srv.ws_chatSoap, System.ServiceModel.IClientChannel {
     }
@@ -203,6 +271,30 @@ namespace Discussion.srv {
             inValue.Body = new Discussion.srv.ParticiperRequestBody();
             inValue.Body.pseudo = pseudo;
             return ((Discussion.srv.ws_chatSoap)(this)).ParticiperAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Discussion.srv.QuiterResponse Discussion.srv.ws_chatSoap.Quiter(Discussion.srv.QuiterRequest request) {
+            return base.Channel.Quiter(request);
+        }
+        
+        public void Quiter(string pseudo) {
+            Discussion.srv.QuiterRequest inValue = new Discussion.srv.QuiterRequest();
+            inValue.Body = new Discussion.srv.QuiterRequestBody();
+            inValue.Body.pseudo = pseudo;
+            Discussion.srv.QuiterResponse retVal = ((Discussion.srv.ws_chatSoap)(this)).Quiter(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Discussion.srv.QuiterResponse> Discussion.srv.ws_chatSoap.QuiterAsync(Discussion.srv.QuiterRequest request) {
+            return base.Channel.QuiterAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Discussion.srv.QuiterResponse> QuiterAsync(string pseudo) {
+            Discussion.srv.QuiterRequest inValue = new Discussion.srv.QuiterRequest();
+            inValue.Body = new Discussion.srv.QuiterRequestBody();
+            inValue.Body.pseudo = pseudo;
+            return ((Discussion.srv.ws_chatSoap)(this)).QuiterAsync(inValue);
         }
     }
 }

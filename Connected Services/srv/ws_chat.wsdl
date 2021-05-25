@@ -27,6 +27,16 @@
           <s:element minOccurs="0" maxOccurs="1" name="Pseudo" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="Quiter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pseudo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuiterResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="ParticiperSoapIn">
@@ -35,10 +45,20 @@
   <wsdl:message name="ParticiperSoapOut">
     <wsdl:part name="parameters" element="tns:ParticiperResponse" />
   </wsdl:message>
+  <wsdl:message name="QuiterSoapIn">
+    <wsdl:part name="parameters" element="tns:Quiter" />
+  </wsdl:message>
+  <wsdl:message name="QuiterSoapOut">
+    <wsdl:part name="parameters" element="tns:QuiterResponse" />
+  </wsdl:message>
   <wsdl:portType name="ws_chatSoap">
     <wsdl:operation name="Participer">
       <wsdl:input message="tns:ParticiperSoapIn" />
       <wsdl:output message="tns:ParticiperSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Quiter">
+      <wsdl:input message="tns:QuiterSoapIn" />
+      <wsdl:output message="tns:QuiterSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ws_chatSoap" type="tns:ws_chatSoap">
@@ -52,11 +72,29 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Quiter">
+      <soap:operation soapAction="http://tempuri.org/Quiter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ws_chatSoap12" type="tns:ws_chatSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="Participer">
       <soap12:operation soapAction="http://tempuri.org/Participer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Quiter">
+      <soap12:operation soapAction="http://tempuri.org/Quiter" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

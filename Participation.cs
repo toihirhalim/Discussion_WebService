@@ -12,6 +12,7 @@ namespace Discussion
 {
     public partial class Participation : Form
     {
+        srv.ws_chatSoapClient srv = new srv.ws_chatSoapClient();
         public string Pseudo { get; set; }
         List<srv.Participant> Participants { get; set; }
 
@@ -27,16 +28,15 @@ namespace Discussion
             Participants = participants.ToList();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Participation_Load(object sender, EventArgs e)
         {
             Text = "Mon pseudo est " + Pseudo;
             lstParticipants.DataSource = Participants.Where(p => !p.Pseudo.Equals(Pseudo)).ToList();
             lstParticipants.DisplayMember = "pseudo";
+        }
+        private void Participation_Close(object sender, EventArgs e)
+        {
+            srv.Quiter(Pseudo);
         }
 
     }

@@ -25,5 +25,10 @@ namespace WS
 
             return participant != null;
         }
+
+        public static void Delete(string pseudo)
+        {
+            participants = participants.Where(p => !p.Pseudo.Equals(pseudo)).ToList();
+        }
     }
 }

@@ -29,7 +29,8 @@ namespace Discussion
             {
                 Text = "votre partiipation est accepté";
                 Participation participationfrm = new Participation(pseudotxtBox.Text, participants);
-                participationfrm.ShowDialog();
+                //participationfrm.ShowDialog();
+                participationfrm.Show();
             }
         }
     }

@@ -25,6 +25,12 @@ namespace WS
             return null;
         }
 
+        [WebMethod]
+        public void Quiter(string pseudo)
+        {
+            DB.Delete(pseudo);
+        }
+
 
     }
 }

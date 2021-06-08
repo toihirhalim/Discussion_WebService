@@ -101,7 +101,6 @@ namespace Discussion
             this.Name = "Participation";
             this.Text = "Participation";
             this.Load += new System.EventHandler(this.Participation_Load);
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Participation_Close);
             this.ResumeLayout(false);
             this.PerformLayout();
 

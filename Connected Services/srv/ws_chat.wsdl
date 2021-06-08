@@ -35,7 +35,11 @@
         </s:complexType>
       </s:element>
       <s:element name="QuiterResponse">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QuiterResult" type="tns:ArrayOfParticipant" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="ClearAll">
         <s:complexType />

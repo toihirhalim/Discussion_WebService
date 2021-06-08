@@ -220,10 +220,17 @@ namespace Discussion.srv {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class QuiterResponseBody {
         
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Discussion.srv.Participant[] QuiterResult;
+        
         public QuiterResponseBody() {
+        }
+        
+        public QuiterResponseBody(Discussion.srv.Participant[] QuiterResult) {
+            this.QuiterResult = QuiterResult;
         }
     }
     
@@ -284,11 +291,12 @@ namespace Discussion.srv {
             return base.Channel.Quiter(request);
         }
         
-        public void Quiter(string pseudo) {
+        public Discussion.srv.Participant[] Quiter(string pseudo) {
             Discussion.srv.QuiterRequest inValue = new Discussion.srv.QuiterRequest();
             inValue.Body = new Discussion.srv.QuiterRequestBody();
             inValue.Body.pseudo = pseudo;
             Discussion.srv.QuiterResponse retVal = ((Discussion.srv.ws_chatSoap)(this)).Quiter(inValue);
+            return retVal.Body.QuiterResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

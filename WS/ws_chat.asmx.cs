@@ -26,9 +26,10 @@ namespace WS
         }
 
         [WebMethod]
-        public void Quiter(string pseudo)
+        public List<Participant> Quiter(string pseudo)
         {
             DB.Delete(pseudo);
+            return DB.getListParticipants();
         }
 
         [WebMethod]

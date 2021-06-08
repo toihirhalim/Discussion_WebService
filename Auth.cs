@@ -13,6 +13,7 @@ namespace Discussion
     public partial class Auth : Form
     {
         srv.ws_chatSoapClient srv = new srv.ws_chatSoapClient();
+        List<Participation> participations = new List<Participation>();
         public Auth()
         {
             InitializeComponent();
@@ -31,7 +32,32 @@ namespace Discussion
                 Participation participationfrm = new Participation(pseudotxtBox.Text, participants);
                 //participationfrm.ShowDialog();
                 participationfrm.Show();
+                participationfrm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.deleteParticipant);
+
+                participations.Add(participationfrm);
+
+                setParticipants(participants);
             }
+
+        }
+
+        public void setParticipants(srv.Participant[] participants)
+        {
+            foreach (Participation part in participations)
+            {
+                part.setParticipants(participants);
+            }
+        }
+
+        public void deleteParticipant(object sender, EventArgs e)
+        {
+            Participation p = (Participation)sender;
+            string pseudo = p.Pseudo;
+
+            participations.RemoveAll(x => x.Pseudo == pseudo);
+
+            srv.Participant[] participants = srv.Quiter(p.Pseudo);
+            setParticipants(participants);
         }
     }
 }

@@ -97,6 +97,9 @@
     <None Include="Connected Services\srv\Discussion.srv.ParticiperResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\srv\Discussion.srv.QuiterParticipantsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\srv\Discussion.srv.QuiterResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

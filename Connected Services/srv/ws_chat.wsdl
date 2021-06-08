@@ -41,6 +41,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="QuiterParticipants">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pseudos" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QuiterParticipantsResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="ClearAll">
         <s:complexType />
       </s:element>
@@ -61,6 +76,12 @@
   <wsdl:message name="QuiterSoapOut">
     <wsdl:part name="parameters" element="tns:QuiterResponse" />
   </wsdl:message>
+  <wsdl:message name="QuiterParticipantsSoapIn">
+    <wsdl:part name="parameters" element="tns:QuiterParticipants" />
+  </wsdl:message>
+  <wsdl:message name="QuiterParticipantsSoapOut">
+    <wsdl:part name="parameters" element="tns:QuiterParticipantsResponse" />
+  </wsdl:message>
   <wsdl:message name="ClearAllSoapIn">
     <wsdl:part name="parameters" element="tns:ClearAll" />
   </wsdl:message>
@@ -75,6 +96,10 @@
     <wsdl:operation name="Quiter">
       <wsdl:input message="tns:QuiterSoapIn" />
       <wsdl:output message="tns:QuiterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QuiterParticipants">
+      <wsdl:input message="tns:QuiterParticipantsSoapIn" />
+      <wsdl:output message="tns:QuiterParticipantsSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="ClearAll">
       <wsdl:input message="tns:ClearAllSoapIn" />
@@ -94,6 +119,15 @@
     </wsdl:operation>
     <wsdl:operation name="Quiter">
       <soap:operation soapAction="http://tempuri.org/Quiter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuiterParticipants">
+      <soap:operation soapAction="http://tempuri.org/QuiterParticipants" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -124,6 +158,15 @@
     </wsdl:operation>
     <wsdl:operation name="Quiter">
       <soap12:operation soapAction="http://tempuri.org/Quiter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuiterParticipants">
+      <soap12:operation soapAction="http://tempuri.org/QuiterParticipants" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

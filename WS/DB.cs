@@ -35,5 +35,10 @@ namespace WS
         {
             participants.Clear();
         }
+
+        internal static void Delete(List<string> pseudos)
+        {
+            participants.RemoveAll(p => pseudos.Contains(p.Pseudo));
+        }
     }
 }

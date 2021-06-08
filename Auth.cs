@@ -59,5 +59,17 @@ namespace Discussion
             srv.Participant[] participants = srv.Quiter(p.Pseudo);
             setParticipants(participants);
         }
+
+        public void deleteAllParticipants(object sender, EventArgs e)
+        {
+            srv.ArrayOfString pseudos = new srv.ArrayOfString();
+            pseudos.AddRange(participations.Select(p => p.Pseudo));
+            srv.QuiterParticipants(pseudos);
+        }
+
+        private void Auth_Load(object sender, EventArgs e)
+        {
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.deleteAllParticipants);
+        }
     }
 }

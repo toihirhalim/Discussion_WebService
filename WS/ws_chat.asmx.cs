@@ -33,6 +33,12 @@ namespace WS
         }
 
         [WebMethod]
+        public void QuiterParticipants(string [] pseudos)
+        {
+            DB.Delete(pseudos.ToList());
+        }
+
+        [WebMethod]
         public void ClearAll()
         {
             DB.Clear();

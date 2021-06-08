@@ -70,6 +70,7 @@ namespace Discussion
             this.Controls.Add(this.btnParticiper);
             this.Name = "Auth";
             this.Text = "Auth";
+            this.Load += new System.EventHandler(this.Auth_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

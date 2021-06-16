@@ -8,6 +8,7 @@ namespace WS
     public class DB
     {
         static List<Participant> participants = new List<Participant>();
+        static List<Message> messages = new List<Message>();
 
         public static void Add(string pseudo)
         {
@@ -34,6 +35,7 @@ namespace WS
         public static void Clear()
         {
             participants.Clear();
+            messages.Clear();
         }
 
         internal static void Delete(List<string> pseudos)

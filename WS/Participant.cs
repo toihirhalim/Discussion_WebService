@@ -7,6 +7,7 @@ namespace WS
 {
     public class Participant
     {
+        static int Serial = 1;
         public int Id { get; set; }
         public string Pseudo { get; set; }
 
@@ -14,6 +15,7 @@ namespace WS
 
         public Participant(string pseudo)
         {
+            Id = Serial++;
             Pseudo = pseudo;
         }
     }

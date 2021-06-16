@@ -35,15 +35,39 @@ namespace Discussion
 
         public void showParticipants()
         {
-            lstParticipants.DataSource = Participants.Where(p => !p.Pseudo.Equals(Pseudo)).ToList();
-            lstParticipants.DisplayMember = "pseudo";
+            listParticipants.Items.Clear();
+
+            foreach (srv.Participant participant in Participants)
+                if (!participant.Pseudo.Equals(Pseudo))
+                    listParticipants.Items.Add(participant.Pseudo);
+
         }
 
         private void Participation_Load(object sender, EventArgs e)
         {
             Text = "Mon pseudo est " + Pseudo;
             showParticipants();
+            listParticipants.CheckOnClick = true;
         }
-      
+
+        private void sendBtn_Click(object sender, EventArgs e)
+        {
+            string texte = msgBox.Text;
+
+            if (Text.Equals("")) return;
+
+            List<string> pseudos = new List<string>();
+            string p = "";
+
+            foreach (object itemChecked in listParticipants.CheckedItems)
+            {
+                pseudos.Add(itemChecked.ToString());
+                p += itemChecked.ToString() + ", ";
+            }
+
+            Console.WriteLine(Pseudo + " sending '" + texte + "' to : " + p);
+
+            msgBox.Text = "";
+        }
     }
 }

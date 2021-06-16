@@ -33,6 +33,18 @@ namespace WS
         }
 
         [WebMethod]
+        public void SendMessage(string sender,string texte, string[] recievers)
+        {
+            DB.addMessage(sender, texte, recievers.ToList());
+        }
+
+        [WebMethod]
+        public List<Message> GetMessages(string pseudo)
+        {
+            return DB.getMessages(pseudo);
+        }
+
+        [WebMethod]
         public void QuiterParticipants(string [] pseudos)
         {
             DB.Delete(pseudos.ToList());

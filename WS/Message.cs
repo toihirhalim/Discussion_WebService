@@ -10,8 +10,8 @@ namespace WS
         static int serial = 1;
         public int Id { get; set; }
         public string Texte { get; set; }
-        public Participant sender { get; set; }
-        public List<Participant> recievers { get; set; }
+        public Participant Sender { get; set; }
+        public List<Participant> Recievers { get; set; }
 
         public Message()
         {

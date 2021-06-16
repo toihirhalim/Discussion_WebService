@@ -36,6 +36,7 @@ namespace Discussion
             this.label3 = new System.Windows.Forms.Label();
             this.sendBtn = new System.Windows.Forms.Button();
             this.listParticipants = new System.Windows.Forms.CheckedListBox();
+            this.selectAll = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -97,14 +98,26 @@ namespace Discussion
             this.listParticipants.FormattingEnabled = true;
             this.listParticipants.Location = new System.Drawing.Point(12, 58);
             this.listParticipants.Name = "listParticipants";
-            this.listParticipants.Size = new System.Drawing.Size(148, 379);
+            this.listParticipants.Size = new System.Drawing.Size(158, 379);
             this.listParticipants.TabIndex = 8;
+            // 
+            // selectAll
+            // 
+            this.selectAll.AutoSize = true;
+            this.selectAll.Location = new System.Drawing.Point(90, 25);
+            this.selectAll.Name = "selectAll";
+            this.selectAll.Size = new System.Drawing.Size(70, 17);
+            this.selectAll.TabIndex = 9;
+            this.selectAll.Text = "Select All";
+            this.selectAll.UseVisualStyleBackColor = true;
+            this.selectAll.CheckedChanged += new System.EventHandler(this.selectAll_CheckedChanged);
             // 
             // Participation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(801, 450);
+            this.Controls.Add(this.selectAll);
             this.Controls.Add(this.listParticipants);
             this.Controls.Add(this.sendBtn);
             this.Controls.Add(this.label3);
@@ -128,5 +141,6 @@ namespace Discussion
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button sendBtn;
         private System.Windows.Forms.CheckedListBox listParticipants;
+        private System.Windows.Forms.CheckBox selectAll;
     }
 }

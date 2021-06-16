@@ -65,12 +65,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListCheckBoxes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ListCheckBoxes.Designer.cs">
-      <DependentUpon>ListCheckBoxes.cs</DependentUpon>
-    </Compile>
     <Compile Include="Participation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,9 +78,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ListCheckBoxes.resx">
-      <DependentUpon>ListCheckBoxes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Participation.resx">
       <DependentUpon>Participation.cs</DependentUpon>

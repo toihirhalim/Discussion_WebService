@@ -54,7 +54,7 @@ namespace Discussion
         {
             string texte = msgBox.Text;
 
-            if (Text.Equals("")) return;
+            if (Text.Equals("") || listParticipants.CheckedItems.Count == 0) return;
 
             List<string> pseudos = new List<string>();
             string p = "";
@@ -65,9 +65,28 @@ namespace Discussion
                 p += itemChecked.ToString() + ", ";
             }
 
+
             Console.WriteLine(Pseudo + " sending '" + texte + "' to : " + p);
 
             msgBox.Text = "";
+        }
+
+        private void selectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (selectAll.Checked)
+            {
+                for (int i = 0; i < listParticipants.Items.Count; i++)
+                    listParticipants.SetItemChecked(i, true);
+
+                selectAll.Text = "Unselect All";
+            }
+            else
+            {
+                for(int i = 0; i < listParticipants.Items.Count; i++)
+                    listParticipants.SetItemChecked(i, false);
+
+                selectAll.Text = "Select All";
+            }
         }
     }
 }

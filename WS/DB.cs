@@ -93,11 +93,14 @@ namespace WS
 
         public List<Message> getMessages(string pseudo)
         {
-            List<Message> messages = DC.Message.Where(m => m.Participant.Pseudo.Equals(pseudo)).ToList();
+            Participant participant = DC.Participant.FirstOrDefault(p => p.Pseudo.Equals(pseudo));
+
+            List<Message> messages = participant.Recievers.Select(r => r.Message).ToList();
+            
             foreach (Message msg in messages)
             {
-                msg.Participant = null;
-                msg.Recievers = null;
+                //msg.Participant = null;
+                //msg.Recievers = null;
             }
                 
             return messages;

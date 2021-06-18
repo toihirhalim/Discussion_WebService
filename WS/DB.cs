@@ -20,8 +20,11 @@ namespace WS
             List<Participant> participants;
             participants =  DC.Participant.ToList();
             foreach (Participant p in participants)
+            {
                 p.Message = null;
-
+                p.Recievers = null;
+            }
+            
             return participants;
         }
 
@@ -32,20 +35,41 @@ namespace WS
 
         public void Delete(string pseudo)
         {
-            Participant test = DC.Participant.FirstOrDefault(t => t.Pseudo.Equals(pseudo));
-            
-            if(pseudo != null)
-            {
-                DC.Message.DeleteAllOnSubmit(DC.Message.Where(m => m.Participant.Pseudo.Equals(pseudo)));
-                DC.Participant.DeleteOnSubmit(test);
-                DC.SubmitChanges();
-            }
+            if (pseudo.Equals("")) return;
+
+            DC.Recievers.DeleteAllOnSubmit(DC.Recievers.Where(r => r.Participant.Pseudo.Equals(pseudo) || r.Message.Participant.Pseudo.Equals(pseudo)));
+            DC.Message.DeleteAllOnSubmit(DC.Message.Where(m => m.Participant.Pseudo.Equals(pseudo)));
+            DC.Participant.DeleteAllOnSubmit(DC.Participant.Where(p => p.Pseudo.Equals(pseudo)));
+
+            DC.SubmitChanges();
         }
 
         public void addMessage(string sender, string texte, List<string> recievers)
         {
-            //Participant senderParticipant = participants.Where(p => p.Pseudo.Equals(sender)).FirstOrDefault();
+            if (texte.Equals("")) return;
 
+            Participant senderParticipant = DC.Participant.FirstOrDefault(p => p.Pseudo.Equals(sender)); 
+
+            if(senderParticipant != null)
+            {
+                List<Participant> recieversParticipants = DC.Participant.Where(p => recievers.Contains(p.Pseudo)).ToList();
+
+                if(recieversParticipants.Count() > 0)
+                {
+                    Message msg = new Message()
+                    {
+                        Msg = texte,
+                        Participant = senderParticipant,
+                    };
+
+                    foreach (Participant p in recieversParticipants)
+                        msg.Recievers.Add(new Recievers() { Participant = p });
+                    
+                    DC.Message.InsertOnSubmit(msg);
+
+                    DC.SubmitChanges();
+                }
+            }
         }
 
         public Message addMessage(string sender, string texte)
@@ -59,6 +83,7 @@ namespace WS
                 DC.Message.InsertOnSubmit(msg);
                 DC.SubmitChanges();
 
+                msg.Recievers = null;
                 msg.Participant = null;
                 return msg;
             }
@@ -70,12 +95,17 @@ namespace WS
         {
             List<Message> messages = DC.Message.Where(m => m.Participant.Pseudo.Equals(pseudo)).ToList();
             foreach (Message msg in messages)
+            {
                 msg.Participant = null;
+                msg.Recievers = null;
+            }
+                
             return messages;
         }
 
         public void Clear()
         {
+            DC.Recievers.DeleteAllOnSubmit(DC.Recievers);
             DC.Message.DeleteAllOnSubmit(DC.Message);
             DC.Participant.DeleteAllOnSubmit(DC.Participant);
             DC.SubmitChanges();
@@ -83,6 +113,7 @@ namespace WS
 
         internal void Delete(List<string> pseudos)
         {
+            DC.Recievers.DeleteAllOnSubmit(DC.Recievers.Where(r => pseudos.Contains(r.Participant.Pseudo)));
             DC.Message.DeleteAllOnSubmit(DC.Message.Where(m => pseudos.Contains(m.Participant.Pseudo)));
             DC.Participant.DeleteAllOnSubmit(DC.Participant.Where(p => pseudos.Contains(p.Pseudo)));
             DC.SubmitChanges();

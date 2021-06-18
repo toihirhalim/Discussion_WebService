@@ -39,12 +39,6 @@ namespace WS
         }
 
         [WebMethod]
-        public Message SendMessageTest(string sender, string texte)
-        {
-            return db.addMessage(sender, texte);
-        }
-
-        [WebMethod]
         public List<Message> GetMessages(string pseudo)
         {
             return db.getMessages(pseudo);

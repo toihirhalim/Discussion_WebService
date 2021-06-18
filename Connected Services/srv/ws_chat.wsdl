@@ -25,6 +25,36 @@
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Pseudo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Recievers" type="tns:ArrayOfRecievers" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="tns:ArrayOfMessage" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRecievers">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Recievers" nillable="true" type="tns:Recievers" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Recievers">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MessageId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParticipantId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Participant" type="tns:Participant" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="tns:Message" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Message">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Msg" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParticipantID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Recievers" type="tns:ArrayOfRecievers" />
+          <s:element minOccurs="0" maxOccurs="1" name="Participant" type="tns:Participant" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="tns:Message" />
         </s:sequence>
       </s:complexType>
       <s:element name="Quiter">
@@ -57,6 +87,20 @@
       </s:complexType>
       <s:element name="SendMessageResponse">
         <s:complexType />
+      </s:element>
+      <s:element name="GetMessages">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pseudo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMessagesResult" type="tns:ArrayOfMessage" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="QuiterParticipants">
         <s:complexType>
@@ -94,6 +138,12 @@
   <wsdl:message name="SendMessageSoapOut">
     <wsdl:part name="parameters" element="tns:SendMessageResponse" />
   </wsdl:message>
+  <wsdl:message name="GetMessagesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMessages" />
+  </wsdl:message>
+  <wsdl:message name="GetMessagesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMessagesResponse" />
+  </wsdl:message>
   <wsdl:message name="QuiterParticipantsSoapIn">
     <wsdl:part name="parameters" element="tns:QuiterParticipants" />
   </wsdl:message>
@@ -118,6 +168,10 @@
     <wsdl:operation name="SendMessage">
       <wsdl:input message="tns:SendMessageSoapIn" />
       <wsdl:output message="tns:SendMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessages">
+      <wsdl:input message="tns:GetMessagesSoapIn" />
+      <wsdl:output message="tns:GetMessagesSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="QuiterParticipants">
       <wsdl:input message="tns:QuiterParticipantsSoapIn" />
@@ -150,6 +204,15 @@
     </wsdl:operation>
     <wsdl:operation name="SendMessage">
       <soap:operation soapAction="http://tempuri.org/SendMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessages">
+      <soap:operation soapAction="http://tempuri.org/GetMessages" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -198,6 +261,15 @@
     </wsdl:operation>
     <wsdl:operation name="SendMessage">
       <soap12:operation soapAction="http://tempuri.org/SendMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessages">
+      <soap12:operation soapAction="http://tempuri.org/GetMessages" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

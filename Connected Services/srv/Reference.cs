@@ -27,6 +27,12 @@ namespace Discussion.srv {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PseudoField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Discussion.srv.Recievers[] RecieversField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Discussion.srv.Message[] MessageField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -59,6 +65,245 @@ namespace Discussion.srv {
                 if ((object.ReferenceEquals(this.PseudoField, value) != true)) {
                     this.PseudoField = value;
                     this.RaisePropertyChanged("Pseudo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public Discussion.srv.Recievers[] Recievers {
+            get {
+                return this.RecieversField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RecieversField, value) != true)) {
+                    this.RecieversField = value;
+                    this.RaisePropertyChanged("Recievers");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public Discussion.srv.Message[] Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Recievers", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Recievers : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IdField;
+        
+        private int MessageIdField;
+        
+        private int ParticipantIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Discussion.srv.Participant ParticipantField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Discussion.srv.Message MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int MessageId {
+            get {
+                return this.MessageIdField;
+            }
+            set {
+                if ((this.MessageIdField.Equals(value) != true)) {
+                    this.MessageIdField = value;
+                    this.RaisePropertyChanged("MessageId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int ParticipantId {
+            get {
+                return this.ParticipantIdField;
+            }
+            set {
+                if ((this.ParticipantIdField.Equals(value) != true)) {
+                    this.ParticipantIdField = value;
+                    this.RaisePropertyChanged("ParticipantId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public Discussion.srv.Participant Participant {
+            get {
+                return this.ParticipantField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ParticipantField, value) != true)) {
+                    this.ParticipantField = value;
+                    this.RaisePropertyChanged("Participant");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public Discussion.srv.Message Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Message", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Message : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MsgField;
+        
+        private int ParticipantIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Discussion.srv.Recievers[] RecieversField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Discussion.srv.Participant ParticipantField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Msg {
+            get {
+                return this.MsgField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MsgField, value) != true)) {
+                    this.MsgField = value;
+                    this.RaisePropertyChanged("Msg");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int ParticipantID {
+            get {
+                return this.ParticipantIDField;
+            }
+            set {
+                if ((this.ParticipantIDField.Equals(value) != true)) {
+                    this.ParticipantIDField = value;
+                    this.RaisePropertyChanged("ParticipantID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public Discussion.srv.Recievers[] Recievers {
+            get {
+                return this.RecieversField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RecieversField, value) != true)) {
+                    this.RecieversField = value;
+                    this.RaisePropertyChanged("Recievers");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public Discussion.srv.Participant Participant {
+            get {
+                return this.ParticipantField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ParticipantField, value) != true)) {
+                    this.ParticipantField = value;
+                    this.RaisePropertyChanged("Participant");
                 }
             }
         }
@@ -104,6 +349,13 @@ namespace Discussion.srv {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SendMessage", ReplyAction="*")]
         System.Threading.Tasks.Task<Discussion.srv.SendMessageResponse> SendMessageAsync(Discussion.srv.SendMessageRequest request);
+        
+        // CODEGEN : La génération du contrat de message depuis le nom d'élément pseudo de l'espace de noms http://tempuri.org/ n'est pas marqué nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetMessages", ReplyAction="*")]
+        Discussion.srv.GetMessagesResponse GetMessages(Discussion.srv.GetMessagesRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetMessages", ReplyAction="*")]
+        System.Threading.Tasks.Task<Discussion.srv.GetMessagesResponse> GetMessagesAsync(Discussion.srv.GetMessagesRequest request);
         
         // CODEGEN : La génération du contrat de message depuis le nom d'élément pseudos de l'espace de noms http://tempuri.org/ n'est pas marqué nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/QuiterParticipants", ReplyAction="*")]
@@ -328,6 +580,74 @@ namespace Discussion.srv {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetMessagesRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetMessages", Namespace="http://tempuri.org/", Order=0)]
+        public Discussion.srv.GetMessagesRequestBody Body;
+        
+        public GetMessagesRequest() {
+        }
+        
+        public GetMessagesRequest(Discussion.srv.GetMessagesRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetMessagesRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string pseudo;
+        
+        public GetMessagesRequestBody() {
+        }
+        
+        public GetMessagesRequestBody(string pseudo) {
+            this.pseudo = pseudo;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetMessagesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetMessagesResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Discussion.srv.GetMessagesResponseBody Body;
+        
+        public GetMessagesResponse() {
+        }
+        
+        public GetMessagesResponse(Discussion.srv.GetMessagesResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetMessagesResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Discussion.srv.Message[] GetMessagesResult;
+        
+        public GetMessagesResponseBody() {
+        }
+        
+        public GetMessagesResponseBody(Discussion.srv.Message[] GetMessagesResult) {
+            this.GetMessagesResult = GetMessagesResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class QuiterParticipantsRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="QuiterParticipants", Namespace="http://tempuri.org/", Order=0)]
@@ -488,6 +808,31 @@ namespace Discussion.srv {
             inValue.Body.texte = texte;
             inValue.Body.recievers = recievers;
             return ((Discussion.srv.ws_chatSoap)(this)).SendMessageAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Discussion.srv.GetMessagesResponse Discussion.srv.ws_chatSoap.GetMessages(Discussion.srv.GetMessagesRequest request) {
+            return base.Channel.GetMessages(request);
+        }
+        
+        public Discussion.srv.Message[] GetMessages(string pseudo) {
+            Discussion.srv.GetMessagesRequest inValue = new Discussion.srv.GetMessagesRequest();
+            inValue.Body = new Discussion.srv.GetMessagesRequestBody();
+            inValue.Body.pseudo = pseudo;
+            Discussion.srv.GetMessagesResponse retVal = ((Discussion.srv.ws_chatSoap)(this)).GetMessages(inValue);
+            return retVal.Body.GetMessagesResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Discussion.srv.GetMessagesResponse> Discussion.srv.ws_chatSoap.GetMessagesAsync(Discussion.srv.GetMessagesRequest request) {
+            return base.Channel.GetMessagesAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Discussion.srv.GetMessagesResponse> GetMessagesAsync(string pseudo) {
+            Discussion.srv.GetMessagesRequest inValue = new Discussion.srv.GetMessagesRequest();
+            inValue.Body = new Discussion.srv.GetMessagesRequestBody();
+            inValue.Body.pseudo = pseudo;
+            return ((Discussion.srv.ws_chatSoap)(this)).GetMessagesAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

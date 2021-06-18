@@ -4,14 +4,25 @@
     <Type Name="Participant">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Pseudo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Participant_Recievers" Member="Recievers" ThisKey="Id" OtherKey="ParticipantId" Type="Recievers" />
       <Association Name="Participant_Message" Member="Message" ThisKey="Id" OtherKey="ParticipantID" Type="Message" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Recievers" Member="Recievers">
+    <Type Name="Recievers">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MessageId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ParticipantId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Participant_Recievers" Member="Participant" ThisKey="ParticipantId" OtherKey="Id" Type="Participant" IsForeignKey="true" />
+      <Association Name="Message_Recievers" Member="Message" ThisKey="MessageId" OtherKey="Id" Type="Message" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Message" Member="Message">
     <Type Name="Message">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Msg" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="ParticipantID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParticipantID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Message_Recievers" Member="Recievers" ThisKey="Id" OtherKey="MessageId" Type="Recievers" />
       <Association Name="Participant_Message" Member="Participant" ThisKey="ParticipantID" OtherKey="Id" Type="Participant" IsForeignKey="true" />
     </Type>
   </Table>

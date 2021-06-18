@@ -33,6 +33,9 @@ namespace WS
     partial void InsertParticipant(Participant instance);
     partial void UpdateParticipant(Participant instance);
     partial void DeleteParticipant(Participant instance);
+    partial void InsertRecievers(Recievers instance);
+    partial void UpdateRecievers(Recievers instance);
+    partial void DeleteRecievers(Recievers instance);
     partial void InsertMessage(Message instance);
     partial void UpdateMessage(Message instance);
     partial void DeleteMessage(Message instance);
@@ -76,6 +79,14 @@ namespace WS
 			}
 		}
 		
+		public System.Data.Linq.Table<Recievers> Recievers
+		{
+			get
+			{
+				return this.GetTable<Recievers>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Message> Message
 		{
 			get
@@ -95,6 +106,8 @@ namespace WS
 		
 		private string _Pseudo;
 		
+		private EntitySet<Recievers> _Recievers;
+		
 		private EntitySet<Message> _Message;
 		
     #region Définitions de méthodes d'extensibilité
@@ -109,6 +122,7 @@ namespace WS
 		
 		public Participant()
 		{
+			this._Recievers = new EntitySet<Recievers>(new Action<Recievers>(this.attach_Recievers), new Action<Recievers>(this.detach_Recievers));
 			this._Message = new EntitySet<Message>(new Action<Message>(this.attach_Message), new Action<Message>(this.detach_Message));
 			OnCreated();
 		}
@@ -153,6 +167,19 @@ namespace WS
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Participant_Recievers", Storage="_Recievers", ThisKey="Id", OtherKey="ParticipantId")]
+		public EntitySet<Recievers> Recievers
+		{
+			get
+			{
+				return this._Recievers;
+			}
+			set
+			{
+				this._Recievers.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Participant_Message", Storage="_Message", ThisKey="Id", OtherKey="ParticipantID")]
 		public EntitySet<Message> Message
 		{
@@ -186,6 +213,18 @@ namespace WS
 			}
 		}
 		
+		private void attach_Recievers(Recievers entity)
+		{
+			this.SendPropertyChanging();
+			entity.Participant = this;
+		}
+		
+		private void detach_Recievers(Recievers entity)
+		{
+			this.SendPropertyChanging();
+			entity.Participant = null;
+		}
+		
 		private void attach_Message(Message entity)
 		{
 			this.SendPropertyChanging();
@@ -199,6 +238,198 @@ namespace WS
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Recievers")]
+	public partial class Recievers : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _MessageId;
+		
+		private int _ParticipantId;
+		
+		private EntityRef<Participant> _Participant;
+		
+		private EntityRef<Message> _Message;
+		
+    #region Définitions de méthodes d'extensibilité
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnMessageIdChanging(int value);
+    partial void OnMessageIdChanged();
+    partial void OnParticipantIdChanging(int value);
+    partial void OnParticipantIdChanged();
+    #endregion
+		
+		public Recievers()
+		{
+			this._Participant = default(EntityRef<Participant>);
+			this._Message = default(EntityRef<Message>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MessageId", DbType="Int NOT NULL")]
+		public int MessageId
+		{
+			get
+			{
+				return this._MessageId;
+			}
+			set
+			{
+				if ((this._MessageId != value))
+				{
+					if (this._Message.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMessageIdChanging(value);
+					this.SendPropertyChanging();
+					this._MessageId = value;
+					this.SendPropertyChanged("MessageId");
+					this.OnMessageIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParticipantId", DbType="Int NOT NULL")]
+		public int ParticipantId
+		{
+			get
+			{
+				return this._ParticipantId;
+			}
+			set
+			{
+				if ((this._ParticipantId != value))
+				{
+					if (this._Participant.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnParticipantIdChanging(value);
+					this.SendPropertyChanging();
+					this._ParticipantId = value;
+					this.SendPropertyChanged("ParticipantId");
+					this.OnParticipantIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Participant_Recievers", Storage="_Participant", ThisKey="ParticipantId", OtherKey="Id", IsForeignKey=true)]
+		public Participant Participant
+		{
+			get
+			{
+				return this._Participant.Entity;
+			}
+			set
+			{
+				Participant previousValue = this._Participant.Entity;
+				if (((previousValue != value) 
+							|| (this._Participant.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Participant.Entity = null;
+						previousValue.Recievers.Remove(this);
+					}
+					this._Participant.Entity = value;
+					if ((value != null))
+					{
+						value.Recievers.Add(this);
+						this._ParticipantId = value.Id;
+					}
+					else
+					{
+						this._ParticipantId = default(int);
+					}
+					this.SendPropertyChanged("Participant");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Message_Recievers", Storage="_Message", ThisKey="MessageId", OtherKey="Id", IsForeignKey=true)]
+		public Message Message
+		{
+			get
+			{
+				return this._Message.Entity;
+			}
+			set
+			{
+				Message previousValue = this._Message.Entity;
+				if (((previousValue != value) 
+							|| (this._Message.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Message.Entity = null;
+						previousValue.Recievers.Remove(this);
+					}
+					this._Message.Entity = value;
+					if ((value != null))
+					{
+						value.Recievers.Add(this);
+						this._MessageId = value.Id;
+					}
+					else
+					{
+						this._MessageId = default(int);
+					}
+					this.SendPropertyChanged("Message");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Message")]
 	public partial class Message : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -209,7 +440,9 @@ namespace WS
 		
 		private string _Msg;
 		
-		private System.Nullable<int> _ParticipantID;
+		private int _ParticipantID;
+		
+		private EntitySet<Recievers> _Recievers;
 		
 		private EntityRef<Participant> _Participant;
 		
@@ -221,12 +454,13 @@ namespace WS
     partial void OnIdChanged();
     partial void OnMsgChanging(string value);
     partial void OnMsgChanged();
-    partial void OnParticipantIDChanging(System.Nullable<int> value);
+    partial void OnParticipantIDChanging(int value);
     partial void OnParticipantIDChanged();
     #endregion
 		
 		public Message()
 		{
+			this._Recievers = new EntitySet<Recievers>(new Action<Recievers>(this.attach_Recievers), new Action<Recievers>(this.detach_Recievers));
 			this._Participant = default(EntityRef<Participant>);
 			OnCreated();
 		}
@@ -271,8 +505,8 @@ namespace WS
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParticipantID", DbType="Int")]
-		public System.Nullable<int> ParticipantID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParticipantID", DbType="Int NOT NULL")]
+		public int ParticipantID
 		{
 			get
 			{
@@ -292,6 +526,19 @@ namespace WS
 					this.SendPropertyChanged("ParticipantID");
 					this.OnParticipantIDChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Message_Recievers", Storage="_Recievers", ThisKey="Id", OtherKey="MessageId")]
+		public EntitySet<Recievers> Recievers
+		{
+			get
+			{
+				return this._Recievers;
+			}
+			set
+			{
+				this._Recievers.Assign(value);
 			}
 		}
 		
@@ -322,7 +569,7 @@ namespace WS
 					}
 					else
 					{
-						this._ParticipantID = default(Nullable<int>);
+						this._ParticipantID = default(int);
 					}
 					this.SendPropertyChanged("Participant");
 				}
@@ -347,6 +594,18 @@ namespace WS
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Recievers(Recievers entity)
+		{
+			this.SendPropertyChanging();
+			entity.Message = this;
+		}
+		
+		private void detach_Recievers(Recievers entity)
+		{
+			this.SendPropertyChanging();
+			entity.Message = null;
 		}
 	}
 }

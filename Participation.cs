@@ -13,7 +13,9 @@ namespace Discussion
     public partial class Participation : Form
     {
         public string Pseudo { get; set; }
+        public List<string> recieverPseudos = new List<string>();
         List<srv.Participant> Participants { get; set; }
+        srv.ws_chatSoapClient srv = new srv.ws_chatSoapClient();
 
         public Participation()
         {
@@ -56,17 +58,15 @@ namespace Discussion
 
             if (Text.Equals("") || listParticipants.CheckedItems.Count == 0) return;
 
-            List<string> pseudos = new List<string>();
-            string p = "";
+            recieverPseudos.Clear();
 
             foreach (object itemChecked in listParticipants.CheckedItems)
-            {
-                pseudos.Add(itemChecked.ToString());
-                p += itemChecked.ToString() + ", ";
-            }
+                recieverPseudos.Add(itemChecked.ToString());
 
+            srv.ArrayOfString recievers = new srv.ArrayOfString();
+            recievers.AddRange(recieverPseudos);
 
-            Console.WriteLine(Pseudo + " sending '" + texte + "' to : " + p);
+            srv.SendMessage(Pseudo, texte, recievers);
 
             msgBox.Text = "";
         }

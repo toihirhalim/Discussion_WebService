@@ -4,6 +4,15 @@
     <Type Name="Participant">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Pseudo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Participant_Message" Member="Message" ThisKey="Id" OtherKey="ParticipantID" Type="Message" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Message" Member="Message">
+    <Type Name="Message">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Msg" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ParticipantID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Participant_Message" Member="Participant" ThisKey="ParticipantID" OtherKey="Id" Type="Participant" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

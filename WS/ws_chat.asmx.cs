@@ -12,14 +12,14 @@ namespace WS
     [System.ComponentModel.ToolboxItem(false)]
     public class ws_chat : System.Web.Services.WebService
     {
-
+        DB db = new DB();
         [WebMethod]
         public List<Participant> Participer(string pseudo)
         {
-            if (!DB.Exist(pseudo))
+            if (!db.Exist(pseudo))
             {
-                DB.Add(pseudo);
-                return DB.getListParticipants();
+                db.Add(pseudo);
+                return db.getListParticipants();
             }
 
             return null;
@@ -28,32 +28,38 @@ namespace WS
         [WebMethod]
         public List<Participant> Quiter(string pseudo)
         {
-            DB.Delete(pseudo);
-            return DB.getListParticipants();
+            db.Delete(pseudo);
+            return db.getListParticipants();
         }
 
         [WebMethod]
         public void SendMessage(string sender,string texte, string[] recievers)
         {
-            DB.addMessage(sender, texte, recievers.ToList());
+            db.addMessage(sender, texte, recievers.ToList());
         }
 
-        /*[WebMethod]
+        [WebMethod]
+        public Message SendMessageTest(string sender, string texte)
+        {
+            return db.addMessage(sender, texte);
+        }
+
+        [WebMethod]
         public List<Message> GetMessages(string pseudo)
         {
-            return DB.getMessages(pseudo);
-        }*/
+            return db.getMessages(pseudo);
+        }
 
         [WebMethod]
         public void QuiterParticipants(string [] pseudos)
         {
-            DB.Delete(pseudos.ToList());
+            db.Delete(pseudos.ToList());
         }
 
         [WebMethod]
         public void ClearAll()
         {
-            DB.Clear();
+            db.Clear();
         }
 
     }

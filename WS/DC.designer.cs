@@ -33,6 +33,9 @@ namespace WS
     partial void InsertParticipant(Participant instance);
     partial void UpdateParticipant(Participant instance);
     partial void DeleteParticipant(Participant instance);
+    partial void InsertMessage(Message instance);
+    partial void UpdateMessage(Message instance);
+    partial void DeleteMessage(Message instance);
     #endregion
 		
 		public DCDataContext() : 
@@ -72,6 +75,14 @@ namespace WS
 				return this.GetTable<Participant>();
 			}
 		}
+		
+		public System.Data.Linq.Table<Message> Message
+		{
+			get
+			{
+				return this.GetTable<Message>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Participant")]
@@ -83,6 +94,8 @@ namespace WS
 		private int _Id;
 		
 		private string _Pseudo;
+		
+		private EntitySet<Message> _Message;
 		
     #region Définitions de méthodes d'extensibilité
     partial void OnLoaded();
@@ -96,6 +109,7 @@ namespace WS
 		
 		public Participant()
 		{
+			this._Message = new EntitySet<Message>(new Action<Message>(this.attach_Message), new Action<Message>(this.detach_Message));
 			OnCreated();
 		}
 		
@@ -135,6 +149,182 @@ namespace WS
 					this._Pseudo = value;
 					this.SendPropertyChanged("Pseudo");
 					this.OnPseudoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Participant_Message", Storage="_Message", ThisKey="Id", OtherKey="ParticipantID")]
+		public EntitySet<Message> Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				this._Message.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Message(Message entity)
+		{
+			this.SendPropertyChanging();
+			entity.Participant = this;
+		}
+		
+		private void detach_Message(Message entity)
+		{
+			this.SendPropertyChanging();
+			entity.Participant = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Message")]
+	public partial class Message : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Msg;
+		
+		private System.Nullable<int> _ParticipantID;
+		
+		private EntityRef<Participant> _Participant;
+		
+    #region Définitions de méthodes d'extensibilité
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnMsgChanging(string value);
+    partial void OnMsgChanged();
+    partial void OnParticipantIDChanging(System.Nullable<int> value);
+    partial void OnParticipantIDChanged();
+    #endregion
+		
+		public Message()
+		{
+			this._Participant = default(EntityRef<Participant>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Msg", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string Msg
+		{
+			get
+			{
+				return this._Msg;
+			}
+			set
+			{
+				if ((this._Msg != value))
+				{
+					this.OnMsgChanging(value);
+					this.SendPropertyChanging();
+					this._Msg = value;
+					this.SendPropertyChanged("Msg");
+					this.OnMsgChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParticipantID", DbType="Int")]
+		public System.Nullable<int> ParticipantID
+		{
+			get
+			{
+				return this._ParticipantID;
+			}
+			set
+			{
+				if ((this._ParticipantID != value))
+				{
+					if (this._Participant.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnParticipantIDChanging(value);
+					this.SendPropertyChanging();
+					this._ParticipantID = value;
+					this.SendPropertyChanged("ParticipantID");
+					this.OnParticipantIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Participant_Message", Storage="_Participant", ThisKey="ParticipantID", OtherKey="Id", IsForeignKey=true)]
+		public Participant Participant
+		{
+			get
+			{
+				return this._Participant.Entity;
+			}
+			set
+			{
+				Participant previousValue = this._Participant.Entity;
+				if (((previousValue != value) 
+							|| (this._Participant.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Participant.Entity = null;
+						previousValue.Message.Remove(this);
+					}
+					this._Participant.Entity = value;
+					if ((value != null))
+					{
+						value.Message.Add(this);
+						this._ParticipantID = value.Id;
+					}
+					else
+					{
+						this._ParticipantID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Participant");
 				}
 			}
 		}

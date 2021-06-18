@@ -2,11 +2,24 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DC">
   <DataContextMoniker Name="/DCDataContext" />
   <nestedChildShapes>
-    <classShape Id="116309d0-aa1e-4e41-bfa1-755230526512" absoluteBounds="5.25, 1.75, 2, 1.1939925130208333">
+    <classShape Id="970d280c-f845-4064-8e50-73db6725bde7" absoluteBounds="0.75, 1, 2, 1.1939925130208335">
       <DataClassMoniker Name="/DCDataContext/Participant" />
       <nestedChildShapes>
-        <elementListCompartment Id="75c456e8-1363-4c96-bc5c-37a24cf615ea" absoluteBounds="5.265, 2.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="a1b48293-2334-44ed-bfe8-abdc807ec647" absoluteBounds="0.765, 1.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="2250909b-f941-45a4-9c8a-74aaa3269ba6" absoluteBounds="4.875, 1, 2, 1.3862939453124998">
+      <DataClassMoniker Name="/DCDataContext/Message" />
+      <nestedChildShapes>
+        <elementListCompartment Id="46c2bb4e-bd49-4941-84d3-ceb8455215d2" absoluteBounds="4.8900000000000006, 1.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.59699625651042); (4.875 : 1.59699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DCDataContext/Participant/Participant_Message" />
+      <nodes>
+        <classShapeMoniker Id="970d280c-f845-4064-8e50-73db6725bde7" />
+        <classShapeMoniker Id="2250909b-f941-45a4-9c8a-74aaa3269ba6" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

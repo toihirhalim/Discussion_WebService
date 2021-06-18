@@ -98,6 +98,13 @@ namespace Discussion.srv {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Quiter", ReplyAction="*")]
         System.Threading.Tasks.Task<Discussion.srv.QuiterResponse> QuiterAsync(Discussion.srv.QuiterRequest request);
         
+        // CODEGEN : La génération du contrat de message depuis le nom d'élément sender de l'espace de noms http://tempuri.org/ n'est pas marqué nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SendMessage", ReplyAction="*")]
+        Discussion.srv.SendMessageResponse SendMessage(Discussion.srv.SendMessageRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SendMessage", ReplyAction="*")]
+        System.Threading.Tasks.Task<Discussion.srv.SendMessageResponse> SendMessageAsync(Discussion.srv.SendMessageRequest request);
+        
         // CODEGEN : La génération du contrat de message depuis le nom d'élément pseudos de l'espace de noms http://tempuri.org/ n'est pas marqué nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/QuiterParticipants", ReplyAction="*")]
         Discussion.srv.QuiterParticipantsResponse QuiterParticipants(Discussion.srv.QuiterParticipantsRequest request);
@@ -252,6 +259,75 @@ namespace Discussion.srv {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SendMessageRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SendMessage", Namespace="http://tempuri.org/", Order=0)]
+        public Discussion.srv.SendMessageRequestBody Body;
+        
+        public SendMessageRequest() {
+        }
+        
+        public SendMessageRequest(Discussion.srv.SendMessageRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class SendMessageRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string sender;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string texte;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public Discussion.srv.ArrayOfString recievers;
+        
+        public SendMessageRequestBody() {
+        }
+        
+        public SendMessageRequestBody(string sender, string texte, Discussion.srv.ArrayOfString recievers) {
+            this.sender = sender;
+            this.texte = texte;
+            this.recievers = recievers;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SendMessageResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SendMessageResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Discussion.srv.SendMessageResponseBody Body;
+        
+        public SendMessageResponse() {
+        }
+        
+        public SendMessageResponse(Discussion.srv.SendMessageResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class SendMessageResponseBody {
+        
+        public SendMessageResponseBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class QuiterParticipantsRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="QuiterParticipants", Namespace="http://tempuri.org/", Order=0)]
@@ -384,6 +460,34 @@ namespace Discussion.srv {
             inValue.Body = new Discussion.srv.QuiterRequestBody();
             inValue.Body.pseudo = pseudo;
             return ((Discussion.srv.ws_chatSoap)(this)).QuiterAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Discussion.srv.SendMessageResponse Discussion.srv.ws_chatSoap.SendMessage(Discussion.srv.SendMessageRequest request) {
+            return base.Channel.SendMessage(request);
+        }
+        
+        public void SendMessage(string sender, string texte, Discussion.srv.ArrayOfString recievers) {
+            Discussion.srv.SendMessageRequest inValue = new Discussion.srv.SendMessageRequest();
+            inValue.Body = new Discussion.srv.SendMessageRequestBody();
+            inValue.Body.sender = sender;
+            inValue.Body.texte = texte;
+            inValue.Body.recievers = recievers;
+            Discussion.srv.SendMessageResponse retVal = ((Discussion.srv.ws_chatSoap)(this)).SendMessage(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Discussion.srv.SendMessageResponse> Discussion.srv.ws_chatSoap.SendMessageAsync(Discussion.srv.SendMessageRequest request) {
+            return base.Channel.SendMessageAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Discussion.srv.SendMessageResponse> SendMessageAsync(string sender, string texte, Discussion.srv.ArrayOfString recievers) {
+            Discussion.srv.SendMessageRequest inValue = new Discussion.srv.SendMessageRequest();
+            inValue.Body = new Discussion.srv.SendMessageRequestBody();
+            inValue.Body.sender = sender;
+            inValue.Body.texte = texte;
+            inValue.Body.recievers = recievers;
+            return ((Discussion.srv.ws_chatSoap)(this)).SendMessageAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

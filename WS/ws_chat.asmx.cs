@@ -38,11 +38,11 @@ namespace WS
             DB.addMessage(sender, texte, recievers.ToList());
         }
 
-        [WebMethod]
+        /*[WebMethod]
         public List<Message> GetMessages(string pseudo)
         {
             return DB.getMessages(pseudo);
-        }
+        }*/
 
         [WebMethod]
         public void QuiterParticipants(string [] pseudos)

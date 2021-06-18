@@ -17,15 +17,9 @@ namespace WS
 
         public List<Participant> getListParticipants()
         {
-            List<Participant> participants;
-            participants =  DC.Participant.ToList();
-            foreach (Participant p in participants)
-            {
-                p.Message = null;
-                p.Recievers = null;
-            }
+            List<Participant> participants =  DC.Participant.ToList();
             
-            return participants;
+            return participants.Select(p => new Participant { Id = p.Id, Pseudo = p.Pseudo }).ToList();
         }
 
         public bool Exist(string pseudo)
@@ -72,38 +66,30 @@ namespace WS
             }
         }
 
-        public Message addMessage(string sender, string texte)
+        public void addMessage(string sender, string texte)
         {
             Participant participant = DC.Participant.FirstOrDefault(p => p.Pseudo.Equals(sender));
             
-            if(participant != null && participant.Id != 0)
+            if(participant != null)
             {
                 Message msg = new Message() { Msg = texte, Participant= participant };
 
                 DC.Message.InsertOnSubmit(msg);
                 DC.SubmitChanges();
-
-                msg.Recievers = null;
-                msg.Participant = null;
-                return msg;
             }
 
-            return null;
         }
 
         public List<Message> getMessages(string pseudo)
         {
             Participant participant = DC.Participant.FirstOrDefault(p => p.Pseudo.Equals(pseudo));
 
-            List<Message> messages = participant.Recievers.Select(r => r.Message).ToList();
-            
-            foreach (Message msg in messages)
-            {
-                //msg.Participant = null;
-                //msg.Recievers = null;
-            }
-                
-            return messages;
+            return participant.Recievers.Select(r => new Message 
+            { 
+                Id = r.Message.Id, 
+                Msg = r.Message.Msg,
+                ParticipantID = r.Message.ParticipantID
+            }).ToList();
         }
 
         public void Clear()

@@ -89,12 +89,6 @@
     <Compile Include="MessageSystemUC.Designer.cs">
       <DependentUpon>MessageSystemUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyLayout.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MyLayout.Designer.cs">
-      <DependentUpon>MyLayout.cs</DependentUpon>
-    </Compile>
     <Compile Include="Participation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,9 +114,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MessageSystemUC.resx">
       <DependentUpon>MessageSystemUC.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MyLayout.resx">
-      <DependentUpon>MyLayout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Participation.resx">
       <DependentUpon>Participation.cs</DependentUpon>

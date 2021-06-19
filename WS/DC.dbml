@@ -22,6 +22,7 @@
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Msg" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="ParticipantID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="Message_Recievers" Member="Recievers" ThisKey="Id" OtherKey="MessageId" Type="Recievers" />
       <Association Name="Participant_Message" Member="Participant" ThisKey="ParticipantID" OtherKey="Id" Type="Participant" IsForeignKey="true" />
     </Type>

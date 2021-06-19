@@ -54,6 +54,7 @@ namespace WS
                     {
                         Msg = texte,
                         Participant = senderParticipant,
+                        Date = DateTime.Now
                     };
 
                     foreach (Participant p in recieversParticipants)
@@ -88,7 +89,21 @@ namespace WS
             { 
                 Id = r.Message.Id, 
                 Msg = r.Message.Msg,
-                ParticipantID = r.Message.ParticipantID
+                ParticipantID = r.Message.ParticipantID,
+                Date = r.Message.Date
+            }).ToList();
+        }
+
+        public List<Message> getLatestMessages(string pseudo, DateTime lastDate)
+        {
+            Participant participant = DC.Participant.FirstOrDefault(p => p.Pseudo.Equals(pseudo));
+
+            return participant.Recievers.Where(r => r.Message.Date > lastDate).Select(r => new Message
+            {
+                Id = r.Message.Id,
+                Msg = r.Message.Msg,
+                ParticipantID = r.Message.ParticipantID,
+                Date = r.Message.Date
             }).ToList();
         }
 

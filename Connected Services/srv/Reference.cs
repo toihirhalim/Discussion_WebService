@@ -227,6 +227,8 @@ namespace Discussion.srv {
         
         private int ParticipantIDField;
         
+        private System.Nullable<System.DateTime> DateField;
+        
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Discussion.srv.Recievers[] RecieversField;
         
@@ -282,7 +284,20 @@ namespace Discussion.srv {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public System.Nullable<System.DateTime> Date {
+            get {
+                return this.DateField;
+            }
+            set {
+                if ((this.DateField.Equals(value) != true)) {
+                    this.DateField = value;
+                    this.RaisePropertyChanged("Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
         public Discussion.srv.Recievers[] Recievers {
             get {
                 return this.RecieversField;
@@ -295,7 +310,7 @@ namespace Discussion.srv {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
         public Discussion.srv.Participant Participant {
             get {
                 return this.ParticipantField;
@@ -356,6 +371,13 @@ namespace Discussion.srv {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetMessages", ReplyAction="*")]
         System.Threading.Tasks.Task<Discussion.srv.GetMessagesResponse> GetMessagesAsync(Discussion.srv.GetMessagesRequest request);
+        
+        // CODEGEN : La génération du contrat de message depuis le nom d'élément pseudo de l'espace de noms http://tempuri.org/ n'est pas marqué nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetLatestMessages", ReplyAction="*")]
+        Discussion.srv.GetLatestMessagesResponse GetLatestMessages(Discussion.srv.GetLatestMessagesRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetLatestMessages", ReplyAction="*")]
+        System.Threading.Tasks.Task<Discussion.srv.GetLatestMessagesResponse> GetLatestMessagesAsync(Discussion.srv.GetLatestMessagesRequest request);
         
         // CODEGEN : La génération du contrat de message depuis le nom d'élément pseudos de l'espace de noms http://tempuri.org/ n'est pas marqué nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/QuiterParticipants", ReplyAction="*")]
@@ -648,6 +670,78 @@ namespace Discussion.srv {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetLatestMessagesRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetLatestMessages", Namespace="http://tempuri.org/", Order=0)]
+        public Discussion.srv.GetLatestMessagesRequestBody Body;
+        
+        public GetLatestMessagesRequest() {
+        }
+        
+        public GetLatestMessagesRequest(Discussion.srv.GetLatestMessagesRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetLatestMessagesRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string pseudo;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string lastDate;
+        
+        public GetLatestMessagesRequestBody() {
+        }
+        
+        public GetLatestMessagesRequestBody(string pseudo, string lastDate) {
+            this.pseudo = pseudo;
+            this.lastDate = lastDate;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetLatestMessagesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetLatestMessagesResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Discussion.srv.GetLatestMessagesResponseBody Body;
+        
+        public GetLatestMessagesResponse() {
+        }
+        
+        public GetLatestMessagesResponse(Discussion.srv.GetLatestMessagesResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetLatestMessagesResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Discussion.srv.Message[] GetLatestMessagesResult;
+        
+        public GetLatestMessagesResponseBody() {
+        }
+        
+        public GetLatestMessagesResponseBody(Discussion.srv.Message[] GetLatestMessagesResult) {
+            this.GetLatestMessagesResult = GetLatestMessagesResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class QuiterParticipantsRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="QuiterParticipants", Namespace="http://tempuri.org/", Order=0)]
@@ -833,6 +927,33 @@ namespace Discussion.srv {
             inValue.Body = new Discussion.srv.GetMessagesRequestBody();
             inValue.Body.pseudo = pseudo;
             return ((Discussion.srv.ws_chatSoap)(this)).GetMessagesAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Discussion.srv.GetLatestMessagesResponse Discussion.srv.ws_chatSoap.GetLatestMessages(Discussion.srv.GetLatestMessagesRequest request) {
+            return base.Channel.GetLatestMessages(request);
+        }
+        
+        public Discussion.srv.Message[] GetLatestMessages(string pseudo, string lastDate) {
+            Discussion.srv.GetLatestMessagesRequest inValue = new Discussion.srv.GetLatestMessagesRequest();
+            inValue.Body = new Discussion.srv.GetLatestMessagesRequestBody();
+            inValue.Body.pseudo = pseudo;
+            inValue.Body.lastDate = lastDate;
+            Discussion.srv.GetLatestMessagesResponse retVal = ((Discussion.srv.ws_chatSoap)(this)).GetLatestMessages(inValue);
+            return retVal.Body.GetLatestMessagesResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Discussion.srv.GetLatestMessagesResponse> Discussion.srv.ws_chatSoap.GetLatestMessagesAsync(Discussion.srv.GetLatestMessagesRequest request) {
+            return base.Channel.GetLatestMessagesAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Discussion.srv.GetLatestMessagesResponse> GetLatestMessagesAsync(string pseudo, string lastDate) {
+            Discussion.srv.GetLatestMessagesRequest inValue = new Discussion.srv.GetLatestMessagesRequest();
+            inValue.Body = new Discussion.srv.GetLatestMessagesRequestBody();
+            inValue.Body.pseudo = pseudo;
+            inValue.Body.lastDate = lastDate;
+            return ((Discussion.srv.ws_chatSoap)(this)).GetLatestMessagesAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

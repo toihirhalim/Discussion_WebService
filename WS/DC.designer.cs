@@ -11,13 +11,18 @@
 
 namespace WS
 {
-    using System.Data.Linq;
-    using System.Data.Linq.Mapping;
-    using System.ComponentModel;
-    using System;
-
-
-    [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="maBase")]
+	using System.Data.Linq;
+	using System.Data.Linq.Mapping;
+	using System.Data;
+	using System.Collections.Generic;
+	using System.Reflection;
+	using System.Linq;
+	using System.Linq.Expressions;
+	using System.ComponentModel;
+	using System;
+	
+	
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="maBase")]
 	public partial class DCDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -437,6 +442,8 @@ namespace WS
 		
 		private int _ParticipantID;
 		
+		private System.Nullable<System.DateTime> _Date;
+		
 		private EntitySet<Recievers> _Recievers;
 		
 		private EntityRef<Participant> _Participant;
@@ -451,6 +458,8 @@ namespace WS
     partial void OnMsgChanged();
     partial void OnParticipantIDChanging(int value);
     partial void OnParticipantIDChanged();
+    partial void OnDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateChanged();
     #endregion
 		
 		public Message()
@@ -520,6 +529,26 @@ namespace WS
 					this._ParticipantID = value;
 					this.SendPropertyChanged("ParticipantID");
 					this.OnParticipantIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
 				}
 			}
 		}

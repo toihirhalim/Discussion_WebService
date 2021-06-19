@@ -45,6 +45,21 @@ namespace WS
         }
 
         [WebMethod]
+        public List<Message> GetLatestMessages(string pseudo, string lastDate)
+        {
+            try
+            {
+                DateTime dt = DateTime.Parse(lastDate);
+                return db.getLatestMessages(pseudo, dt);
+            }
+            catch (Exception)
+            {
+                return db.getMessages(pseudo);
+            }
+
+        }
+
+        [WebMethod]
         public void QuiterParticipants(string [] pseudos)
         {
             db.Delete(pseudos.ToList());

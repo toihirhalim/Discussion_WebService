@@ -136,6 +136,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Connected Services\srv\Discussion.srv.GetLatestMessagesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\srv\Discussion.srv.GetMessagesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

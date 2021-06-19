@@ -13,8 +13,11 @@ namespace Discussion
     public partial class Participation : Form
     {
         public string Pseudo { get; set; }
+        public Boolean messageSent { get; set; }
         public List<string> recieverPseudos = new List<string>();
         List<srv.Participant> Participants { get; set; }
+        List<srv.Message> messages { get; set; }
+
         srv.ws_chatSoapClient srv = new srv.ws_chatSoapClient();
 
         public Participation()
@@ -56,7 +59,11 @@ namespace Discussion
         {
             string texte = msgBox.Text;
 
-            if (Text.Equals("") || listParticipants.CheckedItems.Count == 0) return;
+            if (texte.Equals("") || listParticipants.CheckedItems.Count == 0)
+            {
+                messageSent = false;
+                return;
+            }
 
             recieverPseudos.Clear();
 
@@ -68,10 +75,54 @@ namespace Discussion
 
             srv.SendMessage(Pseudo, texte, recievers);
             showSentMessage(texte);
+            messageSent = true;
             msgBox.Text = "";
             this.ActiveControl = msgBox;
         }
 
+        public void getRecievedMesages()
+        {
+            if(messages == null || messages.Count == 0)
+            {
+                messages = srv.GetMessages(Pseudo).ToList();
+                showNewMessages(messages);
+            }
+            else
+            {
+                DateTime latestDate = (DateTime) messages[messages.Count - 1].Date;
+
+                string dateString = latestDate.ToString("yyyy-MM-ddTHH:mm:sss.fff");
+
+                List<srv.Message> newMessages = srv.GetLatestMessages(Pseudo, dateString).ToList();
+
+                if(newMessages.Count > 0)
+                {
+                    showNewMessages(newMessages);
+                }
+
+                messages = messages.Concat(newMessages).ToList();
+            }
+
+        }
+
+        private void showNewMessages(List<srv.Message> newMessages)
+        {
+            MessageUC msgUC = null;
+            foreach (srv.Message msg in newMessages)
+            {
+                string sender = Participants.FirstOrDefault(p => p.Id == msg.ParticipantID).Pseudo;
+                msgUC = new MessageUC(sender, msg.Msg);
+                flPnl.Controls.Add(msgUC);
+            }
+
+            if(msgUC != null)
+                flPnl.ScrollControlIntoView(msgUC);
+        }
+
+        public Button getSendBtn()
+        {
+            return sendBtn;
+        }
         private void selectAll_CheckedChanged(object sender, EventArgs e)
         {
             if (selectAll.Checked)

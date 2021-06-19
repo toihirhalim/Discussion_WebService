@@ -33,7 +33,7 @@ namespace Discussion
                 //participationfrm.ShowDialog();
                 participationfrm.Show();
                 participationfrm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.deleteParticipant);
-
+                participationfrm.getSendBtn().Click += new EventHandler(this.mesageSent);
                 participations.Add(participationfrm);
 
                 setParticipants(participants);
@@ -41,6 +41,16 @@ namespace Discussion
             this.ActiveControl = pseudotxtBox;
             pseudotxtBox.Text = "";
 
+        }
+
+        public void mesageSent(object sender, EventArgs e)
+        {
+            Button b = (Button) sender;
+            Participation p = (Participation) b.Parent;
+            if (!p.messageSent) return;
+
+            foreach (Participation part in participations)
+                part.getRecievedMesages();
         }
 
         public void setParticipants(srv.Participant[] participants)

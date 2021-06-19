@@ -65,6 +65,24 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MessageEnvoyeUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MessageEnvoyeUC.Designer.cs">
+      <DependentUpon>MessageEnvoyeUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageRecuUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MessageRecuUC.Designer.cs">
+      <DependentUpon>MessageRecuUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageSystemUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MessageSystemUC.Designer.cs">
+      <DependentUpon>MessageSystemUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Participation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +96,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MessageEnvoyeUC.resx">
+      <DependentUpon>MessageEnvoyeUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MessageRecuUC.resx">
+      <DependentUpon>MessageRecuUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MessageSystemUC.resx">
+      <DependentUpon>MessageSystemUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Participation.resx">
       <DependentUpon>Participation.cs</DependentUpon>

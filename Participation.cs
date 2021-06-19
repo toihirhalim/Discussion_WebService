@@ -67,8 +67,9 @@ namespace Discussion
             recievers.AddRange(recieverPseudos);
 
             srv.SendMessage(Pseudo, texte, recievers);
-
+            showSentMessage(texte);
             msgBox.Text = "";
+            this.ActiveControl = msgBox;
         }
 
         private void selectAll_CheckedChanged(object sender, EventArgs e)
@@ -87,6 +88,12 @@ namespace Discussion
 
                 selectAll.Text = "Select All";
             }
+        }
+        
+        private void showSentMessage(string message) {
+            MessageUC msgUC = new MessageUC(message);
+            flPnl.Controls.Add(msgUC);
+            flPnl.ScrollControlIntoView(msgUC);
         }
     }
 }

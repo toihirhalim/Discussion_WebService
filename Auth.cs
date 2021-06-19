@@ -38,6 +38,8 @@ namespace Discussion
 
                 setParticipants(participants);
             }
+            this.ActiveControl = pseudotxtBox;
+            pseudotxtBox.Text = "";
 
         }
 

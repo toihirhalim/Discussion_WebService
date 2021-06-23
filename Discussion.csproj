@@ -65,29 +65,29 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="MessageUC.cs">
+    <Compile Include="UC\ucMessage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MessageUC.Designer.cs">
-      <DependentUpon>MessageUC.cs</DependentUpon>
+    <Compile Include="UC\ucMessage.Designer.cs">
+      <DependentUpon>ucMessage.cs</DependentUpon>
     </Compile>
-    <Compile Include="MessageEnvoyeUC.cs">
+    <Compile Include="UC\ucMessageEnvoye.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MessageEnvoyeUC.Designer.cs">
-      <DependentUpon>MessageEnvoyeUC.cs</DependentUpon>
+    <Compile Include="UC\ucMessageEnvoye.Designer.cs">
+      <DependentUpon>ucMessageEnvoye.cs</DependentUpon>
     </Compile>
-    <Compile Include="MessageRecuUC.cs">
+    <Compile Include="UC\ucMessageRecu.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MessageRecuUC.Designer.cs">
-      <DependentUpon>MessageRecuUC.cs</DependentUpon>
+    <Compile Include="UC\ucMessageRecu.Designer.cs">
+      <DependentUpon>ucMessageRecu.cs</DependentUpon>
     </Compile>
-    <Compile Include="MessageSystemUC.cs">
+    <Compile Include="UC\ucMessageSystem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MessageSystemUC.Designer.cs">
-      <DependentUpon>MessageSystemUC.cs</DependentUpon>
+    <Compile Include="UC\ucMessageSystem.Designer.cs">
+      <DependentUpon>ucMessageSystem.cs</DependentUpon>
     </Compile>
     <Compile Include="Participation.cs">
       <SubType>Form</SubType>
@@ -103,17 +103,17 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MessageUC.resx">
-      <DependentUpon>MessageUC.cs</DependentUpon>
+    <EmbeddedResource Include="UC\ucMessage.resx">
+      <DependentUpon>ucMessage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MessageEnvoyeUC.resx">
-      <DependentUpon>MessageEnvoyeUC.cs</DependentUpon>
+    <EmbeddedResource Include="UC\ucMessageEnvoye.resx">
+      <DependentUpon>ucMessageEnvoye.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MessageRecuUC.resx">
-      <DependentUpon>MessageRecuUC.cs</DependentUpon>
+    <EmbeddedResource Include="UC\ucMessageRecu.resx">
+      <DependentUpon>ucMessageRecu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MessageSystemUC.resx">
-      <DependentUpon>MessageSystemUC.cs</DependentUpon>
+    <EmbeddedResource Include="UC\ucMessageSystem.resx">
+      <DependentUpon>ucMessageSystem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Participation.resx">
       <DependentUpon>Participation.cs</DependentUpon>

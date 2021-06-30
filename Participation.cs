@@ -38,14 +38,34 @@ namespace Discussion
             showParticipants();
         }
 
-        public void addParticipants(List<srv.Participant> participants)
+        public void addParticipants(srv.Participant[] newParticipants)
         {
-            Participants.AddRange(participants);
+            Participants.AddRange(newParticipants.ToList());
+
+            NotificationUC notif = null;
+            foreach(srv.Participant p in newParticipants)
+            {
+                listParticipants.Items.Add(p.Pseudo);
+                notif = new NotificationUC(p.Pseudo + " enters the room");
+                flPnl.Controls.Add(notif);
+            }
+
+            if(notif != null)
+            {
+                flPnl.ScrollControlIntoView(notif);
+                selectAllParticipants();
+            }
+
         }
 
-        public void removeParticipants(List<srv.Participant> participants)
+        public void removeParticipants(string pseudo)
         {
-            //Participants.RemoveAll(participants);
+            Participants.Remove(Participants.FirstOrDefault(p => p.Pseudo.Equals(pseudo)));
+            listParticipants.Items.RemoveAt(listParticipants.Items.IndexOf(pseudo));
+
+            NotificationUC notif = new NotificationUC(pseudo + " just left the room");
+            flPnl.Controls.Add(notif);
+            flPnl.ScrollControlIntoView(notif);
         }
 
         public void showParticipants()
@@ -55,9 +75,8 @@ namespace Discussion
             foreach (srv.Participant participant in Participants)
                 if (!participant.Pseudo.Equals(Pseudo))
                     listParticipants.Items.Add(participant.Pseudo);
-            
-            for (int i = 0; i < listParticipants.Items.Count; i++)
-                listParticipants.SetItemChecked(i, true);
+
+            selectAllParticipants();
         }
 
         private void Participation_Load(object sender, EventArgs e)
@@ -134,6 +153,12 @@ namespace Discussion
                 flPnl.ScrollControlIntoView(msgUC);
         }
 
+        private void selectAllParticipants()
+        {
+            for (int i = 0; i < listParticipants.Items.Count; i++)
+                listParticipants.SetItemChecked(i, true);
+        }
+
         public Button getSendBtn()
         {
             return sendBtn;
@@ -142,8 +167,7 @@ namespace Discussion
         {
             if (selectAll.Checked)
             {
-                for (int i = 0; i < listParticipants.Items.Count; i++)
-                    listParticipants.SetItemChecked(i, true);
+                selectAllParticipants();
 
                 selectAll.Text = "Unselect All";
             }

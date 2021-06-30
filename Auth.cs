@@ -34,9 +34,10 @@ namespace Discussion
                 participationfrm.Show();
                 participationfrm.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.deleteParticipant);
                 participationfrm.getSendBtn().Click += new EventHandler(this.mesageSent);
-                participations.Add(participationfrm);
 
                 setParticipants(participants);
+
+                participations.Add(participationfrm);
             }
             this.ActiveControl = pseudotxtBox;
             pseudotxtBox.Text = "";
@@ -55,10 +56,12 @@ namespace Discussion
 
         public void setParticipants(srv.Participant[] participants)
         {
+            List<string> pseudos = participations.Select(p => p.Pseudo).ToList();
+
+            srv.Participant[] newParticipants = participants.Where(p => !pseudos.Contains(p.Pseudo)).ToArray();
+
             foreach (Participation part in participations)
-            {
-                part.setParticipants(participants);
-            }
+                part.addParticipants(newParticipants);
         }
 
         public void deleteParticipant(object sender, EventArgs e)
@@ -66,7 +69,10 @@ namespace Discussion
             Participation p = (Participation)sender;
             string pseudo = p.Pseudo;
 
-            participations.RemoveAll(x => x.Pseudo == pseudo);
+            participations.RemoveAll(x => x.Pseudo.Equals(pseudo));
+
+            foreach (Participation part in participations)
+                part.removeParticipants(pseudo);
 
             srv.Participant[] participants = srv.Quiter(p.Pseudo);
             setParticipants(participants);

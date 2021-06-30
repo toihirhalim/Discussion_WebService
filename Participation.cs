@@ -38,6 +38,16 @@ namespace Discussion
             showParticipants();
         }
 
+        public void addParticipants(List<srv.Participant> participants)
+        {
+            Participants.AddRange(participants);
+        }
+
+        public void removeParticipants(List<srv.Participant> participants)
+        {
+            //Participants.RemoveAll(participants);
+        }
+
         public void showParticipants()
         {
             listParticipants.Items.Clear();
@@ -45,7 +55,9 @@ namespace Discussion
             foreach (srv.Participant participant in Participants)
                 if (!participant.Pseudo.Equals(Pseudo))
                     listParticipants.Items.Add(participant.Pseudo);
-
+            
+            for (int i = 0; i < listParticipants.Items.Count; i++)
+                listParticipants.SetItemChecked(i, true);
         }
 
         private void Participation_Load(object sender, EventArgs e)
@@ -53,6 +65,9 @@ namespace Discussion
             Text = "Mon pseudo est " + Pseudo;
             showParticipants();
             listParticipants.CheckOnClick = true;
+
+            NotificationUC notif = new NotificationUC("Welcome " + Pseudo);
+            flPnl.Controls.Add(notif);
         }
 
         private void sendBtn_Click(object sender, EventArgs e)

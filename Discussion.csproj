@@ -37,6 +37,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -65,6 +66,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC\ucNotification.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\ucNotification.Designer.cs">
+      <DependentUpon>ucNotification.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC\ucMessage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -83,12 +90,6 @@
     <Compile Include="UC\ucMessageRecu.Designer.cs">
       <DependentUpon>ucMessageRecu.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC\ucMessageSystem.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC\ucMessageSystem.Designer.cs">
-      <DependentUpon>ucMessageSystem.cs</DependentUpon>
-    </Compile>
     <Compile Include="Participation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +104,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UC\ucNotification.resx">
+      <DependentUpon>ucNotification.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UC\ucMessage.resx">
       <DependentUpon>ucMessage.cs</DependentUpon>
     </EmbeddedResource>
@@ -111,9 +115,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC\ucMessageRecu.resx">
       <DependentUpon>ucMessageRecu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC\ucMessageSystem.resx">
-      <DependentUpon>ucMessageSystem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Participation.resx">
       <DependentUpon>Participation.cs</DependentUpon>

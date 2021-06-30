@@ -1,7 +1,7 @@
 ﻿
 namespace Discussion
 {
-    partial class MessageSystemUC
+    partial class NotificationUC
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -29,34 +29,33 @@ namespace Discussion
         /// </summary>
         private void InitializeComponent()
         {
-            this.messageText = new System.Windows.Forms.Label();
+            this.msgText = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // messageText
+            // msgText
             // 
-            this.messageText.AutoSize = true;
-            this.messageText.Location = new System.Drawing.Point(57, 9);
-            this.messageText.Name = "messageText";
-            this.messageText.Size = new System.Drawing.Size(49, 13);
-            this.messageText.TabIndex = 0;
-            this.messageText.Text = "message";
+            this.msgText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.msgText.Location = new System.Drawing.Point(0, 0);
+            this.msgText.Name = "msgText";
+            this.msgText.Size = new System.Drawing.Size(607, 20);
+            this.msgText.TabIndex = 0;
+            this.msgText.Text = "Welcome";
+            this.msgText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // MessageSystemUC
+            // NotificationUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.Controls.Add(this.messageText);
-            this.Name = "MessageSystemUC";
-            this.Size = new System.Drawing.Size(154, 30);
-            this.Load += new System.EventHandler(this.MessageSystemUC_Load);
+            this.Controls.Add(this.msgText);
+            this.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.Name = "NotificationUC";
+            this.Size = new System.Drawing.Size(607, 20);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label messageText;
+        private System.Windows.Forms.Label msgText;
     }
 }

@@ -10,22 +10,16 @@ using System.Windows.Forms;
 
 namespace Discussion
 {
-    public partial class MessageSystemUC : UserControl
+    public partial class NotificationUC : UserControl
     {
-        public MessageSystemUC()
+        public NotificationUC()
         {
             InitializeComponent();
         }
-
-        public MessageSystemUC(string message)
+        public NotificationUC(string message)
         {
             InitializeComponent();
-            messageText.Text = message;
-        }
-
-        private void MessageSystemUC_Load(object sender, EventArgs e)
-        {
-
+            msgText.Text = message;
         }
     }
 }

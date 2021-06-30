@@ -97,6 +97,8 @@ namespace Discussion
             // selectAll
             // 
             this.selectAll.AutoSize = true;
+            this.selectAll.Checked = true;
+            this.selectAll.CheckState = System.Windows.Forms.CheckState.Checked;
             this.selectAll.Location = new System.Drawing.Point(90, 25);
             this.selectAll.Name = "selectAll";
             this.selectAll.Size = new System.Drawing.Size(70, 17);

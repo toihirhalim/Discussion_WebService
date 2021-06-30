@@ -37,7 +37,7 @@ namespace Discussion
             this.msgText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.msgText.Location = new System.Drawing.Point(0, 0);
             this.msgText.Name = "msgText";
-            this.msgText.Size = new System.Drawing.Size(607, 20);
+            this.msgText.Size = new System.Drawing.Size(583, 20);
             this.msgText.TabIndex = 0;
             this.msgText.Text = "Welcome";
             this.msgText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -46,10 +46,11 @@ namespace Discussion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.msgText);
             this.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.Name = "NotificationUC";
-            this.Size = new System.Drawing.Size(607, 20);
+            this.Size = new System.Drawing.Size(583, 20);
             this.ResumeLayout(false);
 
         }

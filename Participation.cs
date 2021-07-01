@@ -53,7 +53,8 @@ namespace Discussion
             if(notif != null)
             {
                 flPnl.ScrollControlIntoView(notif);
-                selectAllParticipants();
+                if(selectAll.Checked)
+                    selectAllParticipants();
             }
 
         }
@@ -168,15 +169,6 @@ namespace Discussion
             if (selectAll.Checked)
             {
                 selectAllParticipants();
-
-                selectAll.Text = "Unselect All";
-            }
-            else
-            {
-                for(int i = 0; i < listParticipants.Items.Count; i++)
-                    listParticipants.SetItemChecked(i, false);
-
-                selectAll.Text = "Select All";
             }
         }
         
@@ -184,6 +176,32 @@ namespace Discussion
             MessageUC msgUC = new MessageUC(message);
             flPnl.Controls.Add(msgUC);
             flPnl.ScrollControlIntoView(msgUC);
+        }
+
+        private void listParticipants_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (e.NewValue != CheckState.Checked && selectAll.Checked)
+            {
+                selectAll.Checked = false;
+            }
+        }
+
+        private void unselectAll_MouseHover(object sender, EventArgs e)
+        {
+            unselectAll.ForeColor = Color.FromName("DarkRed");
+        }
+
+        private void unselectAll_MouseLeave(object sender, EventArgs e)
+        {
+            unselectAll.ForeColor = Color.FromName("GrayText");
+        }
+
+        private void unselectAll_Click(object sender, EventArgs e)
+        {
+            selectAll.Checked = false;
+
+            for (int i = 0; i < listParticipants.Items.Count; i++)
+                listParticipants.SetItemChecked(i, false);
         }
     }
 }

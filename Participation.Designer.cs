@@ -37,6 +37,7 @@ namespace Discussion
             this.listParticipants = new System.Windows.Forms.CheckedListBox();
             this.selectAll = new System.Windows.Forms.CheckBox();
             this.flPnl = new System.Windows.Forms.FlowLayoutPanel();
+            this.unselectAll = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -93,6 +94,7 @@ namespace Discussion
             this.listParticipants.Name = "listParticipants";
             this.listParticipants.Size = new System.Drawing.Size(158, 379);
             this.listParticipants.TabIndex = 8;
+            this.listParticipants.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.listParticipants_ItemCheck);
             // 
             // selectAll
             // 
@@ -101,9 +103,9 @@ namespace Discussion
             this.selectAll.CheckState = System.Windows.Forms.CheckState.Checked;
             this.selectAll.Location = new System.Drawing.Point(90, 25);
             this.selectAll.Name = "selectAll";
-            this.selectAll.Size = new System.Drawing.Size(70, 17);
+            this.selectAll.Size = new System.Drawing.Size(37, 17);
             this.selectAll.TabIndex = 9;
-            this.selectAll.Text = "Select All";
+            this.selectAll.Text = "All";
             this.selectAll.UseVisualStyleBackColor = true;
             this.selectAll.CheckedChanged += new System.EventHandler(this.selectAll_CheckedChanged);
             // 
@@ -118,11 +120,26 @@ namespace Discussion
             this.flPnl.TabIndex = 10;
             this.flPnl.WrapContents = false;
             // 
+            // unselectAll
+            // 
+            this.unselectAll.AutoSize = true;
+            this.unselectAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.unselectAll.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.unselectAll.Location = new System.Drawing.Point(133, 25);
+            this.unselectAll.Name = "unselectAll";
+            this.unselectAll.Size = new System.Drawing.Size(15, 13);
+            this.unselectAll.TabIndex = 11;
+            this.unselectAll.Text = "X";
+            this.unselectAll.Click += new System.EventHandler(this.unselectAll_Click);
+            this.unselectAll.MouseLeave += new System.EventHandler(this.unselectAll_MouseLeave);
+            this.unselectAll.MouseHover += new System.EventHandler(this.unselectAll_MouseHover);
+            // 
             // Participation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(801, 450);
+            this.Controls.Add(this.unselectAll);
             this.Controls.Add(this.flPnl);
             this.Controls.Add(this.selectAll);
             this.Controls.Add(this.listParticipants);
@@ -148,5 +165,6 @@ namespace Discussion
         private System.Windows.Forms.CheckedListBox listParticipants;
         private System.Windows.Forms.CheckBox selectAll;
         private System.Windows.Forms.FlowLayoutPanel flPnl;
+        private System.Windows.Forms.Label unselectAll;
     }
 }

@@ -24,9 +24,5 @@ namespace Discussion
             msgText.Text = message;
         }
 
-        private void MessageRecuUC_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

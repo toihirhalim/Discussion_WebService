@@ -73,7 +73,6 @@ namespace Discussion
             this.Name = "MessageEnvoyeUC";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Size = new System.Drawing.Size(100, 25);
-            this.Load += new System.EventHandler(this.MessageEnvoyeUC_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

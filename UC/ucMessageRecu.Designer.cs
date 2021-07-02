@@ -71,7 +71,6 @@ namespace Discussion
             this.MinimumSize = new System.Drawing.Size(50, 25);
             this.Name = "MessageRecuUC";
             this.Size = new System.Drawing.Size(114, 25);
-            this.Load += new System.EventHandler(this.MessageRecuUC_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

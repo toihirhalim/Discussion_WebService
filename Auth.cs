@@ -47,7 +47,7 @@ namespace Discussion
         public void mesageSent(object sender, EventArgs e)
         {
             Button b = (Button) sender;
-            Participation p = (Participation) b.Parent;
+            Participation p = (Participation) b.Parent.Parent.Parent.Parent;
             if (!p.messageSent) return;
 
             foreach (Participation part in participations)

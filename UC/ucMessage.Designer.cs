@@ -36,20 +36,20 @@ namespace Discussion
             // 
             this.flPnl.AutoSize = true;
             this.flPnl.BackColor = System.Drawing.Color.Transparent;
-            this.flPnl.Location = new System.Drawing.Point(3, -7);
+            this.flPnl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flPnl.Location = new System.Drawing.Point(0, 0);
             this.flPnl.Name = "flPnl";
-            this.flPnl.Size = new System.Drawing.Size(580, 0);
+            this.flPnl.Size = new System.Drawing.Size(609, 0);
             this.flPnl.TabIndex = 0;
             // 
-            // Message
+            // MessageUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.flPnl);
-            this.MaximumSize = new System.Drawing.Size(609, 0);
-            this.Name = "Message";
+            this.Name = "MessageUC";
             this.Size = new System.Drawing.Size(609, 0);
             this.ResumeLayout(false);
             this.PerformLayout();

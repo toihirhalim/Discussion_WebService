@@ -44,6 +44,7 @@ namespace Discussion
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.error = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -198,6 +199,7 @@ namespace Discussion
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.error);
             this.panel5.Controls.Add(this.panel4);
             this.panel5.Controls.Add(this.label2);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -216,6 +218,16 @@ namespace Discussion
             this.panel6.Padding = new System.Windows.Forms.Padding(5);
             this.panel6.Size = new System.Drawing.Size(643, 450);
             this.panel6.TabIndex = 14;
+            // 
+            // error
+            // 
+            this.error.AutoSize = true;
+            this.error.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.error.ForeColor = System.Drawing.Color.Red;
+            this.error.Location = new System.Drawing.Point(56, 0);
+            this.error.Name = "error";
+            this.error.Size = new System.Drawing.Size(0, 13);
+            this.error.TabIndex = 4;
             // 
             // Participation
             // 
@@ -257,5 +269,6 @@ namespace Discussion
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label error;
     }
 }

@@ -92,13 +92,9 @@ namespace Discussion
 
         private void sendBtn_Click(object sender, EventArgs e)
         {
-            string texte = msgBox.Text;
-
-            if (texte.Equals("") || listParticipants.CheckedItems.Count == 0)
-            {
-                messageSent = false;
+            messageSent = false;
+            if (!isMessageValid())
                 return;
-            }
 
             recieverPseudos.Clear();
 
@@ -108,11 +104,35 @@ namespace Discussion
             srv.ArrayOfString recievers = new srv.ArrayOfString();
             recievers.AddRange(recieverPseudos);
 
-            srv.SendMessage(Pseudo, texte, recievers);
-            showSentMessage(texte);
+            srv.SendMessage(Pseudo, msgBox.Text, recievers);
+            showSentMessage(msgBox.Text);
             messageSent = true;
             msgBox.Text = "";
+            error.Text = "";
             this.ActiveControl = msgBox;
+        }
+
+        private Boolean isMessageValid() 
+        {
+            if (msgBox.Text.Equals(""))
+            {
+                error.Text = "please enter text bellow";
+                return false;
+            }
+
+            if (Participants.Count() == 1)
+            {
+                error.Text = "you're the only one in the room";
+                return false;
+            }
+
+            if (listParticipants.CheckedItems.Count == 0)
+            {
+                error.Text = "please select at least one to recieve message";
+                return false;
+            }
+
+            return true;
         }
 
         public void getRecievedMesages()

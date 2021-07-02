@@ -51,6 +51,7 @@ namespace Discussion
             this.Controls.Add(this.flPnl);
             this.Name = "MessageUC";
             this.Size = new System.Drawing.Size(609, 0);
+            this.Load += new System.EventHandler(this.MessageUC_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

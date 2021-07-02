@@ -29,5 +29,10 @@ namespace Discussion
             flPnl.Controls.Add(new MessageEnvoyeUC(message));
             flPnl.FlowDirection = FlowDirection.RightToLeft;
         }
+
+        private void MessageUC_Load(object sender, EventArgs e)
+        {
+            this.Dock = DockStyle.Fill;
+        }
     }
 }

@@ -174,7 +174,6 @@ namespace Discussion
         
         private void showSentMessage(string message) {
             MessageUC msgUC = new MessageUC(message);
-            msgUC.Dock = DockStyle.Fill;
             flPnl.Controls.Add(msgUC);
             flPnl.ScrollControlIntoView(msgUC);
         }

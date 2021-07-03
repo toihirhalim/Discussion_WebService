@@ -84,7 +84,6 @@ namespace Discussion
         {
             Text = "Mon pseudo est " + Pseudo;
             showParticipants();
-            listParticipants.CheckOnClick = true;
 
             NotificationUC notif = new NotificationUC("Welcome " + Pseudo);
             flPnl.Controls.Add(notif);

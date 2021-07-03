@@ -36,14 +36,15 @@ namespace Discussion
             this.sendBtn = new System.Windows.Forms.Button();
             this.listParticipants = new System.Windows.Forms.CheckedListBox();
             this.selectAll = new System.Windows.Forms.CheckBox();
-            this.flPnl = new System.Windows.Forms.FlowLayoutPanel();
             this.unselectAll = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.error = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -54,6 +55,7 @@ namespace Discussion
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,7 +74,7 @@ namespace Discussion
             this.msgBox.Location = new System.Drawing.Point(0, 0);
             this.msgBox.Multiline = true;
             this.msgBox.Name = "msgBox";
-            this.msgBox.Size = new System.Drawing.Size(538, 49);
+            this.msgBox.Size = new System.Drawing.Size(539, 49);
             this.msgBox.TabIndex = 2;
             // 
             // label2
@@ -101,7 +103,7 @@ namespace Discussion
             this.sendBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.sendBtn.Dock = System.Windows.Forms.DockStyle.Right;
             this.sendBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sendBtn.Location = new System.Drawing.Point(538, 0);
+            this.sendBtn.Location = new System.Drawing.Point(539, 0);
             this.sendBtn.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
             this.sendBtn.Name = "sendBtn";
             this.sendBtn.Size = new System.Drawing.Size(107, 49);
@@ -117,7 +119,7 @@ namespace Discussion
             this.listParticipants.FormattingEnabled = true;
             this.listParticipants.Location = new System.Drawing.Point(0, 40);
             this.listParticipants.Name = "listParticipants";
-            this.listParticipants.Size = new System.Drawing.Size(142, 400);
+            this.listParticipants.Size = new System.Drawing.Size(141, 400);
             this.listParticipants.TabIndex = 8;
             this.listParticipants.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.listParticipants_ItemCheck);
             // 
@@ -133,19 +135,6 @@ namespace Discussion
             this.selectAll.Text = "All";
             this.selectAll.UseVisualStyleBackColor = true;
             this.selectAll.CheckedChanged += new System.EventHandler(this.selectAll_CheckedChanged);
-            // 
-            // flPnl
-            // 
-            this.flPnl.AutoScroll = true;
-            this.flPnl.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.flPnl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flPnl.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flPnl.Location = new System.Drawing.Point(0, 38);
-            this.flPnl.Name = "flPnl";
-            this.flPnl.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.flPnl.Size = new System.Drawing.Size(645, 329);
-            this.flPnl.TabIndex = 10;
-            this.flPnl.WrapContents = false;
             // 
             // unselectAll
             // 
@@ -169,7 +158,7 @@ namespace Discussion
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(142, 40);
+            this.panel2.Size = new System.Drawing.Size(141, 40);
             this.panel2.TabIndex = 13;
             // 
             // panel4
@@ -179,7 +168,7 @@ namespace Discussion
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 20);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(645, 49);
+            this.panel4.Size = new System.Drawing.Size(646, 49);
             this.panel4.TabIndex = 0;
             // 
             // error
@@ -207,7 +196,7 @@ namespace Discussion
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(791, 440);
-            this.splitContainer1.SplitterDistance = 142;
+            this.splitContainer1.SplitterDistance = 141;
             this.splitContainer1.TabIndex = 15;
             // 
             // splitContainer2
@@ -219,16 +208,28 @@ namespace Discussion
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.flPnl);
+            this.splitContainer2.Panel1.Controls.Add(this.panel3);
             this.splitContainer2.Panel1.Controls.Add(this.label3);
             // 
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.panel4);
             this.splitContainer2.Panel2.Controls.Add(this.panel1);
-            this.splitContainer2.Size = new System.Drawing.Size(645, 440);
+            this.splitContainer2.Size = new System.Drawing.Size(646, 440);
             this.splitContainer2.SplitterDistance = 367;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.AutoScroll = true;
+            this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel3.Controls.Add(this.tableLayoutPanel1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 38);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(5);
+            this.panel3.Size = new System.Drawing.Size(646, 329);
+            this.panel3.TabIndex = 0;
             // 
             // panel1
             // 
@@ -237,8 +238,21 @@ namespace Discussion
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(645, 20);
+            this.panel1.Size = new System.Drawing.Size(646, 20);
             this.panel1.TabIndex = 0;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoSize = true;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 5);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(636, 0);
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // Participation
             // 
@@ -263,6 +277,8 @@ namespace Discussion
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -277,7 +293,6 @@ namespace Discussion
         private System.Windows.Forms.Button sendBtn;
         private System.Windows.Forms.CheckedListBox listParticipants;
         private System.Windows.Forms.CheckBox selectAll;
-        private System.Windows.Forms.FlowLayoutPanel flPnl;
         private System.Windows.Forms.Label unselectAll;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
@@ -285,5 +300,7 @@ namespace Discussion
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

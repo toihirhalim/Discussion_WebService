@@ -72,12 +72,6 @@
     <Compile Include="UC\ucNotification.Designer.cs">
       <DependentUpon>ucNotification.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC\ucMessage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC\ucMessage.Designer.cs">
-      <DependentUpon>ucMessage.cs</DependentUpon>
-    </Compile>
     <Compile Include="UC\ucMessageEnvoye.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -106,9 +100,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC\ucNotification.resx">
       <DependentUpon>ucNotification.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC\ucMessage.resx">
-      <DependentUpon>ucMessage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC\ucMessageEnvoye.resx">
       <DependentUpon>ucMessageEnvoye.cs</DependentUpon>

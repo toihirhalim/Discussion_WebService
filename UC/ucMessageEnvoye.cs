@@ -24,5 +24,9 @@ namespace Discussion
             messageText.Text = message;
         }
 
+        private void MessageEnvoyeUC_Load(object sender, EventArgs e)
+        {
+            this.Anchor = AnchorStyles.Right;
+        }
     }
 }

@@ -47,12 +47,12 @@ namespace Discussion
             {
                 listParticipants.Items.Add(p.Pseudo);
                 notif = new NotificationUC(p.Pseudo + " enters the room");
-                flPnl.Controls.Add(notif);
+                tableLayoutPanel1.Controls.Add(notif);
             }
 
             if(notif != null)
             {
-                flPnl.ScrollControlIntoView(notif);
+                panel3.ScrollControlIntoView(notif);
                 if(selectAll.Checked)
                     selectAllParticipants();
             }
@@ -65,8 +65,8 @@ namespace Discussion
             listParticipants.Items.RemoveAt(listParticipants.Items.IndexOf(pseudo));
 
             NotificationUC notif = new NotificationUC(pseudo + " just left the room");
-            flPnl.Controls.Add(notif);
-            flPnl.ScrollControlIntoView(notif);
+            tableLayoutPanel1.Controls.Add(notif);
+            panel3.ScrollControlIntoView(notif);
         }
 
         public void showParticipants()
@@ -86,7 +86,7 @@ namespace Discussion
             showParticipants();
 
             NotificationUC notif = new NotificationUC("Welcome " + Pseudo);
-            flPnl.Controls.Add(notif);
+            tableLayoutPanel1.Controls.Add(notif);
         }
 
         private void sendBtn_Click(object sender, EventArgs e)
@@ -161,16 +161,16 @@ namespace Discussion
 
         private void showNewMessages(List<srv.Message> newMessages)
         {
-            MessageUC msgUC = null;
+            MessageRecuUC msgUC = null;
             foreach (srv.Message msg in newMessages)
             {
                 string sender = Participants.FirstOrDefault(p => p.Id == msg.ParticipantID).Pseudo;
-                msgUC = new MessageUC(sender, msg.Msg);
-                flPnl.Controls.Add(msgUC);
+                msgUC = new MessageRecuUC(sender, msg.Msg);
+                tableLayoutPanel1.Controls.Add(msgUC);
             }
 
             if(msgUC != null)
-                flPnl.ScrollControlIntoView(msgUC);
+                panel3.ScrollControlIntoView(msgUC);
         }
 
         private void selectAllParticipants()
@@ -192,9 +192,9 @@ namespace Discussion
         }
         
         private void showSentMessage(string message) {
-            MessageUC msgUC = new MessageUC(message);
-            flPnl.Controls.Add(msgUC);
-            flPnl.ScrollControlIntoView(msgUC);
+            MessageEnvoyeUC msgUC = new MessageEnvoyeUC(message);
+            tableLayoutPanel1.Controls.Add(msgUC);
+            panel3.ScrollControlIntoView(msgUC);
         }
 
         private void listParticipants_ItemCheck(object sender, ItemCheckEventArgs e)

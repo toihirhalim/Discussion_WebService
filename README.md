@@ -1,8 +1,12 @@
 # Discussion_WebService
 Windows form App for a Group Chat  
 ![image](discussion%20en%20ligne.bmp)  
-## technologies :
+## Technologies :
 - .net
 - C#
 - Windows Form
-- Web Services
+- Web Services  
+
+## License
+
+[MIT](LICENSE)
